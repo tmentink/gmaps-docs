@@ -1,0 +1,316 @@
+---
+layout      : "docs"
+title       : "Marker"
+description : ""
+group       : "Components"
+---
+
+<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+
+<div class="ui four item stackable menu">
+  <a class="item" href="#AddingComponents">Examples</a>
+  <a class="item" href="#Methods">Methods</a>
+  <a class="item" href="#Events">Events</a>
+  <a class="item" href="#Settings">Settings</a>
+</div>
+
+<div class="ui divider my-3"></div>
+
+
+<!-- Properties
+=========================================== -->
+<h3 id="Properties">Properties</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Property</th>
+      <th class="three wide column">Type</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>string</td>
+      <td>All ids are converted into strings upon creation. When searching by id, gmaps will treat <b>43</b> and <b>"43"</b> as the same. Component ids must be unique within their respective component array.</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td><a href="<%= data.urls.base %>/map">Map</a></td>
+      <td>A reference to the map the component belongs too.</td>
+    </tr>
+    <tr>
+      <td>obj</td>
+      <td><a href="<%= data.urls.googleDocs %>#Marker">Marker</a></td>
+      <td>A reference to the native Marker object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Adding components
+=========================================== -->
+<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<p>
+  Every component must be assigned an id when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
+  "  id: <s>myMarker</s>,\n" +
+  "  position: {\n" + 
+  "    lat: <o>51.178835</o>,\n" + 
+  "    lng: <o>-1.826240</o>\n" + 
+  "  }\n" +
+  "})"
+%>
+
+<p>To add multiple components at once, you can pass in an array of options as the second parameter.</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>markers</s>, [\n" +
+  "  {\n" +
+  "    id: <s>myMarker</s>,\n" +
+  "    center: {\n" + 
+  "      lat: <o>51.178835</o>,\n" + 
+  "      lng: <o>-1.826240</o>\n" + 
+  "    }\n" +
+  "  },\n" +
+  "  ...\n" +
+  "])"
+%>
+
+
+<!-- Setting options
+=========================================== -->
+<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<p>
+  To set options after initialization, specify the option and value.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<%= code_segment "<c>set single option</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>setOptions</bl>(<s>draggable</s>, <o>true</o>)\n\n" +
+  "<c>set multiple options</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>setOptions</bl>({\n" +
+  "  draggable: <o>true</o>,\n" +
+  "  opacity: <o>1</o>\n" +
+  "})"
+%>
+
+
+<!-- Getting options
+=========================================== -->
+<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<p>
+  To get the value of a specifc option, pass in the option name.
+  If you do not supply an option name, all the options will be returned in an object.
+</p>
+<%= code_segment "<c>get single option</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>getOptions</bl>(<s>opacity</s>)\n\n" +
+  "<c>get all options</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>getOptions</bl>()"
+%>
+
+
+<!-- Methods
+=========================================== -->
+<h3 id="Methods">Methods</h3>
+<p>
+  Inherits all the methods from the <a href="<%= data.urls.base %>/docs/components/overview#BaseComponentMethods"">Base Component</a> class.
+  Only additional methods are listed below:
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="four wide column">Method</th>
+      <th class="twelve wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>getPosition()</td>
+      <td>Returns the <a href="<%= data.urls.googleDocs %>/#LatLng">LatLng</a> for the marker's position.</td>
+    </tr>
+    <tr>
+      <td>getPositionString()</td>
+      <td>Returns the marker's position in a formatted string. If the <b>delimitedStrings</b> setting is false, it will return a string in JSON format; otherwise it will return a delimited string.</td>
+    </tr>
+    <tr>
+      <td>off(type)</td>
+      <td>Removes all the event listeners for the specified type. You can also pass in <b>all</b> to remove all event listeners.</td>
+    </tr>
+    <tr>
+      <td>on(type, function)</td>
+      <td>Adds the specified event listener to the marker.</td>
+    </tr>
+    <tr>
+      <td>trigger(type)</td>
+      <td>Triggers the specified event type.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Events
+=========================================== -->
+<h3 id="Events">Events</h3>
+<p>
+  Gmaps simplifies working with events by prodiving an API similar to jQuery.
+  It also uses an internal lookup table to allow for more readable event names.
+</p>
+<%= code_segment "<c>add event</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>on</bl>(<s>click</s>, <p>function</p>() {\n" +
+  "  console.<bl>log</bl>(<s>You clicked my marker!</s>)\n" +
+  "})\n\n" +
+  "<c>trigger event</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>trigger</bl>(<s>click</s>)\n\n" +
+  "<c>remove all events by type</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>off</bl>(<s>center changed</s>)\n\n" +
+  "<c>remove all events</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>off</bl>(<s>all</s>)"
+%>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Event</th>
+      <th class="three wide column">Alias</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>animation_changed</td>
+      <td>animation changed</td>
+      <td>This event is fired when the marker's animation property changes.</td>
+    </tr>
+    <tr>
+      <td>click</td>
+      <td>click</td>
+      <td>This event is fired when the user clicks on the marker.</td>
+    </tr>
+    <tr>
+      <td>clickable_changed</td>
+      <td>clickable changed</td>
+      <td>This event is fired when the marker's clickable property changes.</td>
+    </tr>
+    <tr>
+      <td>cursor_changed</td>
+      <td>cursor changed</td>
+      <td>This event is fired when the marker's cursor property changes.</td>
+    </tr>
+    <tr>
+      <td>dblclick</td>
+      <td>double click</td>
+      <td>This event is fired when the user double-clicks on the marker. Note that the click event will also fire, right before this one.</td>
+    </tr>
+    <tr>
+      <td>drag</td>
+      <td>drag</td>
+      <td>This event is repeatedly fired while the user drags the marker.</td>
+    </tr>
+    <tr>
+      <td>dragend</td>
+      <td>drag end</td>
+      <td>This event is fired when the user stops dragging the marker.</td>
+    </tr>
+    <tr>
+      <td>draggable_changed</td>
+      <td>draggable changed</td>
+      <td>This event is fired when the marker's draggable property changes.</td>
+    </tr>
+    <tr>
+      <td>dragstart</td>
+      <td>drag start</td>
+      <td>This event is fired when the user starts dragging the marker.</td>
+    </tr>
+    <tr>
+      <td>flat_changed</td>
+      <td>flat changed</td>
+      <td>This event is fired when the marker's flat property changes.</td>
+    </tr>
+    <tr>
+      <td>icon_changed</td>
+      <td>icon changed</td>
+      <td>This event is fired when the marker's icon property changes.</td>
+    </tr>
+    <tr>
+      <td>mousedown</td>
+      <td>mouse down</td>
+      <td>This event is fired whenever the user's mouse is pressed down over the marker. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>mousemove</td>
+      <td>mouse move</td>
+      <td>This event is fired whenever the user's mouse moves over the marker.</td>
+    </tr>
+    <tr>
+      <td>mouseout</td>
+      <td>mouse out</td>
+      <td>This event is fired when the user's mouse exits the marker.</td>
+    </tr>
+    <tr>
+      <td>mouseover</td>
+      <td>mouse over</td>
+      <td>This event is fired when the user's mouse enters the marker.</td>
+    </tr>
+    <tr>
+      <td>mouseup</td>
+      <td>mouse up</td>
+      <td>This event is fired when the user's mouse is released over the marker. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>position_changed</td>
+      <td>position changed</td>
+      <td>This event is fired when the marker's position property changes.</td>
+    </tr>
+    <tr>
+      <td>rightclick</td>
+      <td>right click</td>
+      <td>This event is fired when the user right clicks the marker.</td>
+    </tr>
+    <tr>
+      <td>shape_changed</td>
+      <td>shape changed</td>
+      <td>This event is fired when the marker's shape property changes.</td>
+    </tr>
+    <tr>
+      <td>title_changed</td>
+      <td>title changed</td>
+      <td>This event is fired when the marker's title property changes.</td>
+    </tr>
+    <tr>
+      <td>visible_changed</td>
+      <td>visible changed</td>
+      <td>This event is fired when the marker's visible property changes.</td>
+    </tr>
+    <tr>
+      <td>zindex_changed</td>
+      <td>zindex changed</td>
+      <td>This event is fired when the marker's zIndex property changes.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Settings
+=========================================== -->
+<h3 id="Settings">Settings</h3>
+<p>You can set the global defaults at <b>gmap.settings.markerOptions</b>.</p>
+<p>
+  Only gmaps specifc settings are listed below.
+  Refer to <a href="<%= data.urls.googleDocs %>#MarkerOptions">Google's documentation</a> for a full list of available options.
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Setting</th>
+      <th class="three wide column">Default</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>position</td>
+      <td></td>
+      <td>The position of the marker. This can be either a <a href="<%= data.urls.googleDocs %>#LatLng">LatLng</a>, <a href="<%= data.urls.googleDocs %>#LatLngLiteral">LatLngLiteral</a> or a formatted string based on the map's <b>delimitedStrings</b> setting.</td>
+    </tr>
+  </tbody>
+</table>

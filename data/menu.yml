@@ -1,0 +1,44 @@
+---
+- title:   "Getting started"
+  url:     "getting-started"
+  isGroup: false
+
+- title:   "Map"
+  url:     "map"
+  isGroup: false
+
+- title:   "Components"
+  url:     "components/overview"
+  isGroup: true
+  pages:
+    - title: "Overview"
+      url:   "components/overview"
+
+    - title: "Circle"
+      url:   "components/circle"
+
+    - title: "Label"
+      url:   "components/label"
+
+    - title: "Marker"
+      url:   "components/marker"
+
+    - title: "Polygon"
+      url:   "components/polygon"
+
+    - title: "Polyline"
+      url:   "components/polyline"
+
+    - title: "Rectangle"
+      url:   "components/rectangle"
+
+# - title:   "Examples"
+#   url:     "examples/custom-shapes"
+#   isGroup: true
+#   pages:
+#     - title: "Custom shapes"
+#       url:   "examples/custom-shapes"
+
+#     - title: "Delimited strings"
+#       url:   "examples/delimited-strings"
+---

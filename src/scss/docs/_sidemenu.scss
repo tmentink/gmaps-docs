@@ -1,0 +1,80 @@
+// ------------------------------------------------------------------------
+// gmaps-docs: docs/_sidemenu.scss
+// ------------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------------
+// Structure
+// ------------------------------------------------------------------------
+
+.sidemenu {
+  position : relative;
+  width    : 100vw;
+
+  @include bp-min-lg {
+    border-right : rem(1px) solid;
+    height       : calc(100vh - #{$header--height});
+    max-width    : $sidemenu--max-width;
+  }
+}
+
+.sidemenu__items {
+  padding: 1rem;
+  
+  @include bp-min-lg {
+    height     : calc(100vh - 135px);
+    overflow   : hidden;
+    overflow-y : auto;
+  }
+}
+
+.sidemenu__item {
+  display : block;
+  padding : .35rem .5rem;
+  cursor  : pointer;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.sidemenu__item--main {
+  padding: .5rem 0;
+}
+
+
+#txtSearch_wrapper {
+  flex: 1 1 auto;
+}
+
+#btnSidemenu {
+  cursor: pointer;
+}
+
+
+// ------------------------------------------------------------------------
+// Font & Color
+// ------------------------------------------------------------------------
+
+.sidemenu {
+  border-color: $base--border-color;
+}
+
+#btnSidemenu,
+.sidemenu__item {
+  color: $base--color;
+
+  &:hover {
+    color: $base--hover--color;
+  }
+}
+
+.sidemenu__item--active {
+  color       : $base--hover--color;
+  font-weight : bold;
+}
+
+.sidemenu__item--main {
+  font-size   : 1.1rem;
+  font-weight : bold;
+}

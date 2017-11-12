@@ -1,0 +1,57 @@
+---
+layout      : "docs"
+title       : "Getting started"
+description : ""
+group       : ""
+---
+
+<h1 class="mainContent__title mt-0"><%= current_page.data.title %></h1>
+<div class="mainContent__intro">Get started with gmaps, a JavaScript library that simplifies the development of Google Maps web applications.</div>
+
+
+<!-- Download
+=========================================== -->
+<h3 id="Download" class="ui header">Download</h3>
+<ul class="ui list">
+  <li><a href="<%= data.urls.download %>">Download the latest release of gmaps</a></li>
+  <li>Clone the repo: <b>git clone <%= data.urls.github %>.git</b></li>
+  <li>More options coming soon!</li>
+</ul>
+
+<p>Both the compiled and minified versions can be found within the <b>dist/</b> directory:</p>
+<%= code_segment "gmaps/\n" +
+  "└── dist/\n" +
+  "    ├── gmaps.js\n" +
+  "    └── gmaps.min.js"
+%>
+
+
+<!-- Starter Template
+=========================================== -->
+<h3 id="StarterTemplate" class="ui header">Starter template</h3>
+<%= code_segment "<r>&lt;!doctype html&gt;</r>\n" +
+  "<bl>&lt;html&gt;</bl>\n" +
+  "  <bl>&lt;head&gt;</bl>\n" +
+  "    <bl>&lt;title&gt;</bl>gmaps starter page<bl>&lt;/title&gt;</bl>\n" +
+  "    <bl>&lt;meta <p>charset=</p><s>utf-8</s>&gt;</bl>\n" +
+  "    <bl>&lt;meta <p>name=</p><s>viewport</s> <p>content=</p><s>width=device-width, initial-scale=1, shrink-to-fit=no</s>&gt;</bl>\n" +
+  "    <bl>&lt;style&gt;</bl>\n" +
+  "      <r>body</r> {\n" +
+  "        margin: <o>0</o>;\n" +
+  "      }\n" +
+  "      <p>#gmap</p> {\n" +
+  "        height: <o>100vh</o>;\n" +
+  "        width: <o>100vw</o>;\n" +
+  "      }\n" +
+  "    <bl>&lt;/style&gt;</bl>\n" +
+  "  <bl>&lt;/head&gt;</bl>\n" +
+  "  <bl>&lt;body&gt;</bl>\n" +
+  "    <bl>&lt;div <p>id=</p><s>gmap</s>&gt;&lt;/div&gt;</bl>\n\n" +
+  "    <bl>&lt;script</bl> <p>src=</p><s>https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY</s><bl>&gt;&lt;/script&gt;</bl>\n" +
+  "    <bl>&lt;script</bl> <p>src=</p><s>gmaps/dist/gmaps.min.js</s><bl>&gt;&lt;/script&gt;</bl>\n" +
+  "    <bl>&lt;script&gt;</bl>\n" +
+  "      <p>var</p> myMap = new <bl>gmap</bl>()\n" + 
+  "    <bl>&lt;/script&gt;</bl>\n" +
+  "  <bl>&lt;/body&gt;</bl>\n" +
+  "<bl>&lt;/html&gt;</bl>"
+%>

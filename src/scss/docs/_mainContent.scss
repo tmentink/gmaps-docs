@@ -1,0 +1,98 @@
+// ------------------------------------------------------------------------
+// gmaps-docs: docs/_mainContent.scss
+// ------------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------------
+// Structure
+// ------------------------------------------------------------------------
+
+.mainContent {
+  border-top : rem(1px) solid;
+  padding    : 1rem;
+  min-height : calc(100vh - #{$mainContent--top});
+  width      : 100vw;
+
+  @include bp-min-lg {
+    padding    : 1rem 2.5rem 2rem;
+    height     : calc(100vh - #{$header--height});
+    width      : calc(100vw - #{$sidemenu--max-width});
+    overflow   : hidden;
+    overflow-y : auto;
+  }
+}
+
+.mainContent {
+  pre {
+    overflow  : auto;
+    max-width : calc(100vw - 4rem);
+  }
+
+  td {
+    pre {
+      max-width: calc(100vw - 5.5rem);
+    }
+  }
+
+  @include bp-min-lg {
+    p,
+    .mainContent__intro {
+      width: 80%;
+    }
+  }
+}
+
+.code.segment {
+  .label {
+    position : absolute;
+    top      : .25rem;
+    right    : .25rem;
+  }
+}
+
+
+// ------------------------------------------------------------------------
+// Font & Color
+// ------------------------------------------------------------------------
+
+.mainContent {
+  background   : $base--background-color;
+  border-color : $base--border-color;
+}
+
+.mainContent__intro {
+  font-size   : 1.35rem;
+  line-height : 1.5;
+}
+
+.mainContent__title {
+  font-size: 2.15rem;
+}
+
+.code.segment {
+  .label,
+  .label:hover {
+    background: transparent;
+  }
+}
+
+
+// ------------------------------------------------------------------------
+// Effects
+// ------------------------------------------------------------------------
+
+.mainContent {
+  position : absolute;
+  top      : $mainContent--top;
+  @include transition("top", .75s, cubic-bezier(0.19, 1, 0.22, 1));
+  
+  @include bp-min-lg {
+    border-top : none;
+    position   : relative;
+    top        : initial;
+  }
+}
+
+.mainContent--pushed {
+  // top will get set in javascript
+}

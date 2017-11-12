@@ -1,0 +1,16 @@
+// ------------------------------------------------------------------------
+// gmaps-docs: home/_global.scss
+// ------------------------------------------------------------------------
+
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+pre {
+  overflow: auto;
+}
+
+.gmap {
+  height     : 100%;
+  min-height : rem(400px);
+}

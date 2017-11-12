@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gmaps &middot; <%= current_page.data.title %></title>
+    <meta name="author" content="<%= data.global.author %>">
+    <meta name="description" content="<%= current_page.data.description %>">
+
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/semantic.min.css" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/css-util.min.css" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/css/docs.css" />
+  </head>
+  <body>
+    
+    <!-- Header
+    =========================================== --> 
+    <div id="header" class="header flex-column flex-lg-row">
+      <a class="header__logo" href="<%= data.urls.base %>"><img src="<%= data.urls.base %>/img/logo.png" /></a>
+      <div class="header__items">
+        <a class="header__item" href="<%= data.urls.base %>">Home</a>
+        <a class="header__item" href="<%= data.urls.base %>/docs/getting-started">Docs</a>
+        <a class="header__item" href="<%= data.urls.github %>">GitHub</a>
+        <a class="header__item" href="<%= data.urls.license %>">License</a>
+        <a class="header__item d-none d-lg-block ml-auto" href="<%= data.urls.github %>">Currently <span class="version"></span></a>
+        <div class="header__item d-none d-lg-block"><a class="ui primary button" href="<%= data.urls.download %>">Download</a></div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-lg-row">
+      
+      <%= partial 'partials/sidemenu' %>
+
+      <div id="mainContent" class="mainContent">
+        <%= yield %>
+      </div>
+
+    </div>
+
+    <!-- Scripts
+    =========================================== -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0SLOL7qb7Ch3gVhP0yBCVYCp1_lVwF60"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/semantic/semantic.min.js"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/gmaps.min.js?v=alpha.9"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/js/docs.js"></script>
+
+  </body>
+</html>

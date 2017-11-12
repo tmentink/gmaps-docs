@@ -1,0 +1,595 @@
+---
+layout      : "docs"
+title       : "Map"
+description : ""
+group       : ""
+---
+
+<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+
+<div class="ui four item stackable menu">
+  <a class="item" href="#Initializing">Examples</a>
+  <a class="item" href="#Methods">Methods</a>
+  <a class="item" href="#Events">Events</a>
+  <a class="item" href="#Settings">Settings</a>
+</div>
+
+<div class="ui divider my-3"></div>
+
+
+<!-- Properties
+=========================================== -->
+<h3 id="Properties">Properties</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Property</th>
+      <th class="three wide column">Type</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>components</td>
+      <td>Object</td>
+      <td>Holds the map's component arrays. All components added to the map will be stored within their respective component array.</td>
+    </tr>
+    <tr>
+      <td>controls</td>
+      <td>Array<a href="<%= data.urls.googleDocs %>#MVCArray">&lt;MVCArray&gt;</a></td>
+      <td>A reference to the map's native control property.</td>
+    </tr>
+    <tr>
+      <td>data</td>
+      <td><a href="<%= data.urls.googleDocs %>#Data">Data</a></td>
+      <td>A reference to the map's native data property.</td>
+    </tr>
+    <tr>
+      <td>obj</td>
+      <td><a href="<%= data.urls.googleDocs %>#Map">Map</a></td>
+      <td>A reference to the native google map object.</td>
+    </tr>
+    <tr>
+      <td>settings</td>
+      <td>Object</td>
+      <td>Holds the map's local settings.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Initializing
+=========================================== -->
+<h3 id="Initializing" class="ui header">Initializing</h3>
+<p>
+  By default the map will be initialized inside the DOM element with an id of <b>gmap</b>.
+  All default settings can be overwritten by passing in an object during initialization.
+</p>
+<%= code_segment "<p>var</p> myMap = new <bl>gmap</bl>({\n" +
+  "  mapId: <s>myMap</s>,\n" +
+  "  mapOptions: {\n" +
+  "    mapTypeId: <s>satellite</s>,\n" +
+  "    zoom: <o>12</o>\n" +
+  "  }\n" +
+  "})"
+%>
+
+
+<!-- Setting options
+=========================================== -->
+<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<p>
+  To set options after initialization, specify the option and value.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<%= code_segment "<c>single option</c>\n" +
+  "myMap.<bl>setOptions</bl>(<s>mapTypeId</s>, <s>roadmap</s>)\n\n" +
+  "<c>multiple options</c>\n" +
+  "myMap.<bl>setOptions</bl>({\n" +
+  "  mapTypeId: <s>roadmap</s>,\n" +
+  "  mapTypeControl: <o>true</o>\n" +
+  "})"
+%>
+
+
+<!-- Adding components
+=========================================== -->
+<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<p>
+  Every component must be assigned an id when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
+  "  id: <s>myMarker</s>,\n" +
+  "  position: {\n" + 
+  "    lat: <o>37.5</o>,\n" + 
+  "    lng: <o>-120</o>\n" + 
+  "  }\n" +
+  "})"
+%>
+
+<p>
+  To add multiple components at once, you can pass in an array of options as the second parameter.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>markers</s>, [\n" +
+  "  {\n" +
+  "    id: <o>1</o>,\n" +  
+  "    position: {\n" + 
+  "      lat: <o>37.5</o>,\n" + 
+  "      lng: <o>-120</o>\n" + 
+  "    }\n" +
+  "  },\n" +
+  "  ...\n" +
+  "])"
+%>
+
+
+<!-- Removing components
+=========================================== -->
+<h3 id="RemoveComponents" class="ui header">Removing components</h3>
+<p>
+  To remove components from the map, specify the component type and the ids you would like to remove.
+  If an id parameter is not supplied, it will remove all components of the specified type.
+</p>
+<%= code_segment "<c>single id</c>\n" +
+  "myMap.<bl>remove</bl>(<s>marker</s>, <s>myMarker</s>)\n\n" +
+  "<c>multiple ids</c>\n" +
+  "myMap.<bl>remove</bl>(<s>markers</s>, [<o>1</o>, <o>2</o>])\n\n" +
+  "<c>all markers</c>\n" +
+  "myMap.<bl>remove</bl>(<s>markers</s>)"
+%>
+
+
+<!-- Fit Bounds
+=========================================== -->
+<h3 id="FitBounds" class="ui header">Fit bounds</h3>
+<p>
+  With gmaps, you can pass in an object with the components and ids you want to center the map's viewport on.
+  Pass in <b>null</b> to select all components for that type.
+</p>
+<%= code_segment "myMap.<bl>fitBounds</bl>({\n" +
+  "  markers: [<o>1</o>, <o>2</o>],\n" +
+  "  polygons: <o>null</o>  <c>select all polygons</c>\n" +
+  "})"
+%>
+
+<p>You can also pass in <b>initial</b> to reset the map's bounds.</p>
+<%= code_segment "myMap.<bl>fitBounds</bl>(<s>initial</s>)" %>
+
+
+<!-- Geolocation
+=========================================== -->
+<h3 id="Geolocation" class="ui header">Geolocation</h3>
+<p>
+  Gmaps leverages the <a href="<%= data.urls.geolocation %>">HTML Geolocation API</a> to center the map on the browser's current location.
+  You can optionally pass in an object to overwrite the default options.
+</p>
+<%= code_segment "<c>default options</c>\n" +
+  "<p>var</p> defaults = {\n" +
+  "  enableHighAccuracy: <o>false</o>,\n" +
+  "  showMarkers: <o>true</o>,\n" +
+  "  zoom: <o>12</o>\n" +
+  "})\n\n" +
+  "myMap.<bl>geolocate</bl>({\n" +
+  "  enableHighAccuracy: <o>true</o>,\n" +
+  "  zoom: <o>16</o>\n" +
+  "})"
+%>
+
+
+<!-- Methods
+=========================================== -->
+<h3 id="Methods">Methods</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="four wide column">Method</th>
+      <th class="twelve wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>add(type, options)</td>
+      <td>Adds the specified component(s) to the map.</td>
+    </tr>
+    <tr>
+      <td>circles(ids)</td>
+      <td>Returns a CircleArray containing any circles with matching ids.</td>
+    </tr>
+    <tr>
+      <td>fitBounds(bounds)</td>
+      <td>Sets the map's viewport to contain the given bounds. Can also pass in an object of component types and ids.</td>
+    </tr>
+    <tr>
+      <td>geolocate(options)</td>
+      <td>Centers the map on the browser's current location.</td>
+    </tr>
+    <tr>
+      <td>getBounds()</td>
+      <td>Returns the <a href="<%= data.urls.googleDocs %>/#LatLngBounds">LatLngBounds</a> of the map's current viewport.</td>
+    </tr>
+    <tr>
+      <td>getCenter()</td>
+      <td>Returns the <a href="<%= data.urls.googleDocs %>/#LatLng">LatLng</a> for the map's center.</td>
+    </tr>
+    <tr>
+      <td>getCenterString()</td>
+      <td>Returns the map's center in a formatted string. If the <b>delimitedStrings</b> setting is false, it will return a string in JSON format; otherwise it will return a delimited string.</td>
+    </tr>
+    <tr>
+      <td>getDiv()</td>
+      <td>Returns the DOM element the map was rendered in.</td>
+    </tr>
+    <tr>
+      <td>getOptions(option)</td>
+      <td>Returns the value for the specified option. If you do not supply an option, it will return an object with all the map's options.</td>
+    </tr>
+    <tr>
+      <td>getProjection()</td>
+      <td>Returns the map's current <a href="<%= data.urls.googleDocs %>#Projection">Projection</a>.</td>
+    </tr>
+    <tr>
+      <td>getZoom()</td>
+      <td>Returns the map's current zoom level.</td>
+    </tr>
+    <tr>
+      <td>labels(ids)</td>
+      <td>Returns a LabelArray containing any labels with matching ids.</td>
+    </tr>
+    <tr>
+      <td>markers(ids)</td>
+      <td>Returns a MarkerArray containing any markers with matching ids.</td>
+    </tr>
+    <tr>
+      <td>off(type)</td>
+      <td>Removes all the map's event listeners for the specified type. You can also pass in <b>all</b> to remove all event listeners.</td>
+    </tr>
+    <tr>
+      <td>on(type, function)</td>
+      <td>Adds the specified event listener to the map.</td>
+    </tr>
+    <tr>
+      <td>polygons(ids)</td>
+      <td>Returns a PolygonArray containing any polygons with matching ids.</td>
+    </tr>
+    <tr>
+      <td>polylines(ids)</td>
+      <td>Returns a PolylineArray containing any polylines with matching ids.</td>
+    </tr>
+    <tr>
+      <td>rectangles(ids)</td>
+      <td>Returns a RectangleArray containing any rectangles with matching ids.</td>
+    </tr>
+    <tr>
+      <td>remove(type, ids)</td>
+      <td>Removes the specified component(s) from the map. You can optionally supply id(s) to remove any matching component(s).</td>
+    </tr>
+    <tr>
+      <td>reset()</td>
+      <td>Resets the map's bounds and options to its initial values.</td>
+    </tr>
+    <tr>
+      <td>setCenter(center)</td>
+      <td>Sets the map's center.</td>
+    </tr>
+    <tr>
+      <td>setOptions(option, value)</td>
+      <td>Sets the specified option to the supplied value. To set mulitple options, pass in a object as the only parameter.</td>
+    </tr>
+    <tr>
+      <td>setZoom(zoom)</td>
+      <td>Sets the map's zoom level.</td>
+    </tr>
+    <tr>
+      <td>shape(type, options)</td>
+      <td>Returns a LatLngArray for the specified shape.</td>
+    </tr>
+    <tr>
+      <td>trigger(type)</td>
+      <td>Triggers the specified event type.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Events
+=========================================== -->
+<h3 id="Events">Events</h3>
+<p>
+  Gmaps simplifies working with events by prodiving an API similar to jQuery.
+  It also uses an internal lookup table to allow for more readable event names.
+</p>
+<%= code_segment "<c>add event</c>\n" +
+  "myMap.<bl>on</bl>(<s>click</s>, <p>function</p>() {\n" +
+  "  console.<bl>log</bl>(<s>You clicked my map!</s>)\n" +
+  "})\n\n" +
+  "<c>trigger event</c>\n" +
+  "myMap.<bl>trigger</bl>(<s>resize</s>)\n\n" +
+  "<c>remove all events by type</c>\n" +
+  "myMap.<bl>off</bl>(<s>double click</s>)\n\n" +
+  "<c>remove all events</c>\n" +
+  "myMap.<bl>off</bl>(<s>all</s>)"
+%>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Event</th>
+      <th class="three wide column">Alias</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bounds_changed</td>
+      <td>bounds changed</td>
+      <td>This event is fired when the viewport bounds have changed.</td>
+    </tr>
+    <tr>
+      <td>center_changed</td>
+      <td>center changed</td>
+      <td>This event is fired when the map center property changes.</td>
+    </tr>
+    <tr>
+      <td>click</td>
+      <td>click</td>
+      <td>This event is fired when the user clicks on the map.</td>
+    </tr>
+    <tr>
+      <td>dblclick</td>
+      <td>double click</td>
+      <td>This event is fired when the user double-clicks on the map. Note that the click event will also fire, right before this one.</td>
+    </tr>
+    <tr>
+      <td>drag</td>
+      <td>drag</td>
+      <td>This event is repeatedly fired while the user drags the map.</td>
+    </tr>
+    <tr>
+      <td>dragend</td>
+      <td>drag end</td>
+      <td>This event is fired when the user stops dragging the map.</td>
+    </tr>
+    <tr>
+      <td>dragstart</td>
+      <td>drag start</td>
+      <td>This event is fired when the user starts dragging the map.</td>
+    </tr>
+    <tr>
+      <td>heading_changed</td>
+      <td>heading changed</td>
+      <td>This event is fired when the map heading property changes.</td>
+    </tr>
+    <tr>
+      <td>idle</td>
+      <td>idle</td>
+      <td>This event is fired when the map becomes idle after panning or zooming.</td>
+    </tr>
+    <tr>
+      <td>maptypeid_changed</td>
+      <td>mapTypeId changed</td>
+      <td>This event is fired when the mapTypeId property changes.</td>
+    </tr>
+    <tr>
+      <td>mousemove</td>
+      <td>mouse move</td>
+      <td>This event is fired whenever the user's mouse moves over the map container.</td>
+    </tr>
+    <tr>
+      <td>mouseout</td>
+      <td>mouse out</td>
+      <td>This event is fired when the user's mouse exits the map container.</td>
+    </tr>
+    <tr>
+      <td>mouseover</td>
+      <td>mouse over</td>
+      <td>This event is fired when the user's mouse enters the map container.</td>
+    </tr>
+    <tr>
+      <td>projection_changed</td>
+      <td>projection changed</td>
+      <td>This event is fired when the projection has changed.</td>
+    </tr>
+    <tr>
+      <td>resize</td>
+      <td>resize</td>
+      <td>Developers should trigger this event on the map when the div changes size.</td>
+    </tr>
+    <tr>
+      <td>rightclick</td>
+      <td>right click</td>
+      <td>This event is fired when the DOM contextmenu event is fired on the map container.</td>
+    </tr>
+    <tr>
+      <td>tilesloaded</td>
+      <td>tiles loaded</td>
+      <td>This event is fired when the visible tiles have finished loading.</td>
+    </tr>
+    <tr>
+      <td>tilt_changed</td>
+      <td>tilt changed</td>
+      <td>This event is fired when the map tilt property changes.</td>
+    </tr>
+    <tr>
+      <td>zoom_changed</td>
+      <td>zoom changed</td>
+      <td>This event is fired when the map zoom property changes.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Settings
+=========================================== -->
+<h3 id="Settings">Settings</h3>
+<p>You can set the global defaults at <b>gmap.settings</b>.</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Setting</th>
+      <th class="three wide column">Default</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>circleOptions</td>
+      <td><%= code_segment "{\n" +
+        "  clickable: <o>true</o>,\n" +
+        "  draggable: <o>false</o>,\n" +
+        "  editable: <o>false</o>,\n" +
+        "  fillColor: <s>#2196F3</s>,\n" +
+        "  fillOpacity: <o>0.75</o>,\n" +
+        "  strokeColor: <s>#000</s>,\n" +
+        "  strokeOpacity: <o>0.75</o>,\n" +
+        "  strokePosition: <o>0</o>,\n" +
+        "  strokeWeight: <o>1</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for circle components.</td>
+    </tr>
+    <tr>
+      <td>delimitedStrings</td>
+      <td>false</td>
+      <td>If true, the map will create/parse delimited strings. Otherwise strings will be in JSON format.</td>
+    </tr>
+    <tr>
+      <td>delimiter</td>
+      <td><%= code_segment "{\n" +
+        "  latLng: <s>|</s>,\n" +
+        "  latLngArray: <s>~</s>,\n" +
+        "  latLngBounds: <s>|</s>\n" +
+        "}"
+      %></td>
+      <td>The characters used to create/parse delimited strings.</td>
+    </tr>
+    <tr>
+      <td>labelOptions</td>
+      <td><%= code_segment "{\n" +
+        "  align: <s>center</s>,\n" +
+        "  fontColor: <s>#000</s>,\n" +
+        "  fontSize: <o>14</o>,\n" +
+        "  strokeColor: <s>#FFF</s>,\n" +
+        "  strokeWeight: <o>1</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for label components.</td>
+    </tr>
+    <tr>
+      <td>mapId</td>
+      <td>gmap</td>
+      <td>The id of the DOM element the map will be rendered inside.</td>
+    </tr>
+    <tr>
+      <td>mapOptions</td>
+      <td><%= code_segment "{\n" +
+        "  center: {\n" + 
+        "    lat: <o>37.5</o>,\n" + 
+        "    lng: <o>-120</o>\n" + 
+        "  },\n" +
+        "  clickableIcons: <o>false</o>,\n" +
+        "  disableDoubleClickZoom: <o>false</o>,\n" +
+        "  gestureHandling: <s>auto</s>,\n" +
+        "  keyboardShortcuts: <o>true</o>,\n" +
+        "  mapTypeControl: <o>false</o>,\n" +
+        "  mapTypeId: <s>roadmap</s>,\n" +
+        "  scrollWheel: <o>true</o>,\n" +
+        "  streetViewControl: <o>false</o>,\n" +
+        "  zoom: <o>6</o>,\n" +
+        "  zoomControl: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for the map. Refer to <a href="<%= data.urls.googleDocs %>#MapOptions">Google's documentation</a> for a full list of the available options.</td>
+    </tr>
+    <tr>
+      <td>markerOptions</td>
+      <td><%= code_segment "{\n" +
+        "  clickable: <o>true</o>,\n" +
+        "  crossOnDrag: <o>true</o>,\n" +
+        "  draggable: <o>false</o>,\n" +
+        "  opacity: <o>1</o>,\n" +
+        "  optimized: <o>true</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for marker components.</td>
+    </tr>
+    <tr>
+      <td>polygonOptions</td>
+      <td><%= code_segment "{\n" +
+        "  clickable: <o>true</o>,\n" +
+        "  draggable: <o>false</o>,\n" +
+        "  editable: <o>false</o>,\n" +
+        "  fillColor: <s>#2196F3</s>,\n" +
+        "  fillOpacity: <o>0.75</o>,\n" +
+        "  geodesic: <o>false</o>,\n" +
+        "  strokeColor: <s>#000</s>,\n" +
+        "  strokeOpacity: <o>0.75</o>,\n" +
+        "  strokeWeight: <o>1</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for polygon components.</td>
+    </tr>
+    <tr>
+      <td>polylineOptions</td>
+      <td><%= code_segment "{\n" +
+        "  clickable: <o>true</o>,\n" +
+        "  draggable: <o>false</o>,\n" +
+        "  editable: <o>false</o>,\n" +
+        "  geodesic: <o>false</o>,\n" +
+        "  strokeColor: <s>#000</s>,\n" +
+        "  strokeOpacity: <o>0.75</o>,\n" +
+        "  strokeWeight: <o>3</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for polyline components.</td>
+    </tr>
+    <tr>
+      <td>rectangleOptions</td>
+      <td><%= code_segment "{\n" +
+        "  clickable: <o>true</o>,\n" +
+        "  draggable: <o>false</o>,\n" +
+        "  editable: <o>false</o>,\n" +
+        "  fillColor: <s>#2196F3</s>,\n" +
+        "  fillOpacity: <o>0.75</o>,\n" +
+        "  strokeColor: <s>#000</s>,\n" +
+        "  strokeOpacity: <o>0.75</o>,\n" +
+        "  strokePosition: <o>0</o>,\n" +
+        "  strokeWeight: <o>1</o>,\n" +
+        "  visible: <o>true</o>\n" +
+        "}"
+      %></td>
+      <td>The default options for rectangle components.</td>
+    </tr>
+    <tr>
+      <td>urlPrecision</td>
+      <td>5</td>
+      <td>How many decimal places lat/lng values are rounded to.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Callbacks
+=========================================== -->
+<h3 id="Callbacks">Callbacks</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Callback</th>
+      <th class="three wide column">Context</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>onLoad(map)</td>
+      <td>Map</td>
+      <td>Is called after the map's tiles have finished loading.</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,264 @@
+---
+layout      : "docs"
+title       : "Polygon"
+description : ""
+group       : "Components"
+---
+
+<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+
+<div class="ui four item stackable menu">
+  <a class="item" href="#AddingComponents">Examples</a>
+  <a class="item" href="#Methods">Methods</a>
+  <a class="item" href="#Events">Events</a>
+  <a class="item" href="#Settings">Settings</a>
+</div>
+
+<div class="ui divider my-3"></div>
+
+
+<!-- Properties
+=========================================== -->
+<h3 id="Properties">Properties</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Property</th>
+      <th class="three wide column">Type</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>string</td>
+      <td>All ids are converted into strings upon creation. When searching by id, gmaps will treat <b>43</b> and <b>"43"</b> as the same. Component ids must be unique within their respective component array.</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td><a href="<%= data.urls.base %>/map">Map</a></td>
+      <td>A reference to the map the component belongs too.</td>
+    </tr>
+    <tr>
+      <td>obj</td>
+      <td><a href="<%= data.urls.googleDocs %>#Polygon">Polygon</a></td>
+      <td>A reference to the native Polygon object.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Adding components
+=========================================== -->
+<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<p>
+  Every component must be assigned an id when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>polygon</s>, {\n" +
+  "  id: <s>myPolygon</s>,\n" +
+  "  paths: [\n" + 
+  "    { lat: <o>25.774</o>, lng: <o>-80.190</o> },\n" +
+  "    { lat: <o>18.466</o>, lng: <o>-66.118</o> },\n" +
+  "    { lat: <o>32.321</o>, lng: <o>-64.757</o> }\n" +
+  "  ]\n" +
+  "})"
+%>
+
+<p>To add multiple components at once, you can pass in an array of options as the second parameter.</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>polygons</s>, [\n" +
+  "  {\n" +
+  "    id: <o><s>myPolygon</s></o>,\n" +  
+  "    paths: [\n" + 
+  "      { lat: <o>25.774</o>, lng: <o>-80.190</o> },\n" +
+  "      { lat: <o>18.466</o>, lng: <o>-66.118</o> },\n" +
+  "      { lat: <o>32.321</o>, lng: <o>-64.757</o> }\n" +
+  "    ]\n" +
+  "  },\n" +
+  "  ...\n" +
+  "])"
+%>
+
+
+<!-- Setting options
+=========================================== -->
+<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<p>
+  To set options after initialization, specify the option and value.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<%= code_segment "<c>set single option</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>setOptions</bl>(<s>fillColor</s>, <s>#FF0000</s>)\n\n" +
+  "<c>set multiple options</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>setOptions</bl>({\n" +
+  "  fillColor: <s>#FF0000</s>,\n" +
+  "  fillOpacity: <o>1/o>\n" +
+  "})"
+%>
+
+
+<!-- Getting options
+=========================================== -->
+<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<p>
+  To get the value of a specifc option, pass in the option name.
+  If you do not supply an option name, all the options will be returned in an object.
+</p>
+<%= code_segment "<c>get single option</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>getOptions</bl>(<s>fillColor</s>)\n\n" +
+  "<c>get all options</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>getOptions</bl>()"
+%>
+
+
+<!-- Methods
+=========================================== -->
+<h3 id="Methods">Methods</h3>
+<p>
+  Inherits all the methods from the <a href="<%= data.urls.base %>/docs/components/overview#BaseComponentMethods"">Base Component</a> class.
+  Only additional methods are listed below:
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="four wide column">Method</th>
+      <th class="twelve wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>getPath(index)</td>
+      <td>Returns the polygon's paths. You can optionally supply an index to specify which path.</td>
+    </tr>
+    <tr>
+      <td>getPathString(index)</td>
+      <td>Returns the polygon's paths in a formatted string. If the <b>delimitedStrings</b> setting is false, it will return a string in JSON format; otherwise it will return a delimited string. You can optinally supply an index to specify which path.</td>
+    </tr>
+    <tr>
+      <td>off(type)</td>
+      <td>Removes all the event listeners for the specified type. You can also pass in <b>all</b> to remove all event listeners.</td>
+    </tr>
+    <tr>
+      <td>on(type, function)</td>
+      <td>Adds the specified event listener to the polygon.</td>
+    </tr>
+    <tr>
+      <td>trigger(type)</td>
+      <td>Triggers the specified event type.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Events
+=========================================== -->
+<h3 id="Events">Events</h3>
+<p>
+  Gmaps simplifies working with events by prodiving an API similar to jQuery.
+  It also uses an internal lookup table to allow for more readable event names.
+</p>
+<%= code_segment "<c>add event</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>on</bl>(<s>click</s>, <p>function</p>() {\n" +
+  "  console.<bl>log</bl>(<s>You clicked my polygon!</s>)\n" +
+  "})\n\n" +
+  "<c>trigger event</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>trigger</bl>(<s>click</s>)\n\n" +
+  "<c>remove all events by type</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>off</bl>(<s>double click</s>)\n\n" +
+  "<c>remove all events</c>\n" +
+  "myMap.<bl>polygons</bl>().<bl>off</bl>(<s>all</s>)"
+%>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Event</th>
+      <th class="three wide column">Alias</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>click</td>
+      <td>click</td>
+      <td>This event is fired when the user clicks on the polygon.</td>
+    </tr>
+    <tr>
+      <td>dblclick</td>
+      <td>double click</td>
+      <td>This event is fired when the user double-clicks on the polygon. Note that the click event will also fire, right before this one.</td>
+    </tr>
+    <tr>
+      <td>drag</td>
+      <td>drag</td>
+      <td>This event is repeatedly fired while the user drags the polygon.</td>
+    </tr>
+    <tr>
+      <td>dragend</td>
+      <td>drag end</td>
+      <td>This event is fired when the user stops dragging the polygon.</td>
+    </tr>
+    <tr>
+      <td>dragstart</td>
+      <td>drag start</td>
+      <td>This event is fired when the user starts dragging the polygon.</td>
+    </tr>
+    <tr>
+      <td>mousedown</td>
+      <td>mouse down</td>
+      <td>This event is fired whenever the user's mouse is pressed down over the polygon. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>mousemove</td>
+      <td>mouse move</td>
+      <td>This event is fired whenever the user's mouse moves over the polygon.</td>
+    </tr>
+    <tr>
+      <td>mouseout</td>
+      <td>mouse out</td>
+      <td>This event is fired when the user's mouse exits the polygon.</td>
+    </tr>
+    <tr>
+      <td>mouseover</td>
+      <td>mouse over</td>
+      <td>This event is fired when the user's mouse enters the polygon.</td>
+    </tr>
+    <tr>
+      <td>mouseup</td>
+      <td>mouse up</td>
+      <td>This event is fired when the user's mouse is released over the polygon. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>rightclick</td>
+      <td>right click</td>
+      <td>This event is fired when the user right clicks the polygon.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Settings
+=========================================== -->
+<h3 id="Settings">Settings</h3>
+<p>You can set the global defaults at <b>gmap.settings.polygonOptions</b>.</p>
+<p>
+  Only gmaps specifc settings are listed below.
+  Refer to <a href="<%= data.urls.googleDocs %>#PolygonOptions">Google's documentation</a> for a full list of available options.
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Setting</th>
+      <th class="three wide column">Default</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>paths</td>
+      <td></td>
+      <td>The paths of the polygon. This can be either an array of <a href="<%= data.urls.googleDocs %>#LatLng">LatLngs</a>, <a href="<%= data.urls.googleDocs %>#LatLngLiteral">LatLngLiterals</a> or a formatted string based on the map's <b>delimitedStrings</b> setting.</td>
+    </tr>
+  </tbody>
+</table>

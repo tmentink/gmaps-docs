@@ -1,0 +1,263 @@
+---
+layout      : "docs"
+title       : "Rectangle"
+description : ""
+group       : "Components"
+---
+
+<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+
+<div class="ui four item stackable menu">
+  <a class="item" href="#AddingComponents">Examples</a>
+  <a class="item" href="#Methods">Methods</a>
+  <a class="item" href="#Events">Events</a>
+  <a class="item" href="#Settings">Settings</a>
+</div>
+
+<div class="ui divider my-3"></div>
+
+
+<!-- Properties
+=========================================== -->
+<h3 id="Properties">Properties</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Property</th>
+      <th class="three wide column">Type</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>string</td>
+      <td>All ids are converted into strings upon creation. When searching by id, gmaps will treat <b>43</b> and <b>"43"</b> as the same. Component ids must be unique within their respective component array.</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td><a href="<%= data.urls.base %>/map">Map</a></td>
+      <td>A reference to the map the component belongs too.</td>
+    </tr>
+    <tr>
+      <td>obj</td>
+      <td><a href="<%= data.urls.googleDocs %>#Rectangle">Rectangle</a></td>
+      <td>A reference to the native Rectangle object.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Adding components
+=========================================== -->
+<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<p>
+  Every component must be assigned an id when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>rectangle</s>, {\n" +
+  "  id: <s>myRectangle</s>,\n" +
+  "  bounds: {\n" + 
+  "    north: <o>29.98013</o>,\n" +
+  "    south: <o>29.97818</o>,\n" +
+  "    east: <o>31.13538</o>,\n" +
+  "    west: <o>31.13301</o>\n" +
+  "  }\n" +
+  "})"
+%>
+
+<p>To add multiple components at once, you can pass in an array of options as the second parameter.</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>rectangles</s>, [\n" +
+  "  {\n" +
+  "    id: <s>myRectangle</s>,\n" +
+  "    bounds: {\n" + 
+  "      north: <o>29.98013</o>,\n" +
+  "      south: <o>29.97818</o>,\n" +
+  "      east: <o>31.13538</o>,\n" +
+  "      west: <o>31.13301</o>\n" +
+  "    }\n" +
+  "  },\n" +
+  "  ...\n" +
+  "])"
+%>
+
+
+<!-- Setting options
+=========================================== -->
+<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<p>
+  To set options after initialization, specify the option and value.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<%= code_segment "<c>set single option</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>setOptions</bl>(<s>fillColor</s>, <s>#FF0000</s>)\n\n" +
+  "<c>set multiple options</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>setOptions</bl>({\n" +
+  "  fillColor: <s>#FF0000</s>,\n" +
+  "  fillOpacity: <o>1</o>\n" +
+  "})"
+%>
+
+
+<!-- Getting options
+=========================================== -->
+<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<p>
+  To get the value of a specifc option, pass in the option name.
+  If you do not supply an option name, all the options will be returned in an object.
+</p>
+<%= code_segment "<c>get single option</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>getOptions</bl>(<s>fillColor</s>)\n\n" +
+  "<c>get all options</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>getOptions</bl>()"
+%>
+
+
+<!-- Methods
+=========================================== -->
+<h3 id="Methods">Methods</h3>
+<p>
+  Inherits all the methods from the <a href="<%= data.urls.base %>/docs/components/overview#BaseComponentMethods"">Base Component</a> class.
+  Only additional methods are listed below:
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="four wide column">Method</th>
+      <th class="twelve wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>off(type)</td>
+      <td>Removes all the event listeners for the specified type. You can also pass in <b>all</b> to remove all event listeners.</td>
+    </tr>
+    <tr>
+      <td>on(type, function)</td>
+      <td>Adds the specified event listener to the rectangle.</td>
+    </tr>
+    <tr>
+      <td>trigger(type)</td>
+      <td>Triggers the specified event type.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Events
+=========================================== -->
+<h3 id="Events">Events</h3>
+<p>
+  Gmaps simplifies working with events by prodiving an API similar to jQuery.
+  It also uses an internal lookup table to allow for more readable event names.
+</p>
+<%= code_segment "<c>add event</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>on</bl>(<s>click</s>, <p>function</p>() {\n" +
+  "  console.<bl>log</bl>(<s>You clicked my rectangle!</s>)\n" +
+  "})\n\n" +
+  "<c>trigger event</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>trigger</bl>(<s>click</s>)\n\n" +
+  "<c>remove all events by type</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>off</bl>(<s>double click</s>)\n\n" +
+  "<c>remove all events</c>\n" +
+  "myMap.<bl>rectangles</bl>().<bl>off</bl>(<s>all</s>)"
+%>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Event</th>
+      <th class="three wide column">Alias</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bounds_changed</td>
+      <td>bounds changed</td>
+      <td>This event is fired when the rectangle's bounds are changed.</td>
+    </tr>
+    <tr>
+      <td>click</td>
+      <td>click</td>
+      <td>This event is fired when the user clicks on the rectangle.</td>
+    </tr>
+    <tr>
+      <td>dblclick</td>
+      <td>double click</td>
+      <td>This event is fired when the user double-clicks on the rectangle. Note that the click event will also fire, right before this one.</td>
+    </tr>
+    <tr>
+      <td>drag</td>
+      <td>drag</td>
+      <td>This event is repeatedly fired while the user drags the rectangle.</td>
+    </tr>
+    <tr>
+      <td>dragend</td>
+      <td>drag end</td>
+      <td>This event is fired when the user stops dragging the rectangle.</td>
+    </tr>
+    <tr>
+      <td>dragstart</td>
+      <td>drag start</td>
+      <td>This event is fired when the user starts dragging the rectangle.</td>
+    </tr>
+    <tr>
+      <td>mousedown</td>
+      <td>mouse down</td>
+      <td>This event is fired whenever the user's mouse is pressed down over the rectangle. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>mousemove</td>
+      <td>mouse move</td>
+      <td>This event is fired whenever the user's mouse moves over the rectangle.</td>
+    </tr>
+    <tr>
+      <td>mouseout</td>
+      <td>mouse out</td>
+      <td>This event is fired when the user's mouse exits the rectangle.</td>
+    </tr>
+    <tr>
+      <td>mouseover</td>
+      <td>mouse over</td>
+      <td>This event is fired when the user's mouse enters the rectangle.</td>
+    </tr>
+    <tr>
+      <td>mouseup</td>
+      <td>mouse up</td>
+      <td>This event is fired when the user's mouse is released over the rectangle. This will fire before the click event.</td>
+    </tr>
+    <tr>
+      <td>rightclick</td>
+      <td>right click</td>
+      <td>This event is fired when the user right clicks the rectangle.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Settings
+=========================================== -->
+<h3 id="Settings">Settings</h3>
+<p>You can set the global defaults at <b>gmap.settings.rectangleOptions</b>.</p>
+<p>
+  Only gmaps specifc settings are listed below.
+  Refer to <a href="<%= data.urls.googleDocs %>#RectangleOptions">Google's documentation</a> for a full list of available options.
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Setting</th>
+      <th class="three wide column">Default</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bounds</td>
+      <td></td>
+      <td>The bounds of the rectangle. This can be either a of <a href="<%= data.urls.googleDocs %>#LatLngBounds">LatLngBounds</a>, <a href="<%= data.urls.googleDocs %>#LatLngBoundsLiteral">LatLngBoundsLiterals</a> or a formatted string based on the map's <b>delimitedStrings</b> setting.</td>
+    </tr>
+  </tbody>
+</table>

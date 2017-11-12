@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gmaps &middot; <%= current_page.data.title %></title>
+    <meta name="author" content="<%= data.global.author %>">
+    <meta name="description" content="<%= current_page.data.description %>">
+
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/semantic.min.css" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/css-util.min.css" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/css/home.css" />
+  </head>
+  <body>
+        
+    <!-- Header
+    =========================================== -->
+    <div id="header">
+      <div class="header__container">
+        <a id="version" class="version ui basic label m-0" href="<%= data.urls.github %>"></a>
+        <h1 class="header__title mt-0 mb-2">gmaps</h1>
+        <h2 class="header__slogan mt-0 mb-4">The way maps were meant to be made</h2>
+
+        <a href="<%= data.urls.base %>/docs/getting-started" class="ui huge primary button">Explore Docs</a>
+      </div>
+    </div>
+    <div class="triangle triangle--down"></div>
+
+
+    <!-- Examples
+    =========================================== -->
+    <div id="examples" class="stackable very relaxed ui grid container my-8"></div>
+
+
+    <!-- Footer
+    =========================================== -->
+    <div id="footer" class="ui black inverted vertical footer segment">
+      <div id="footer_container">
+        <a href="<%= data.urls.home %>"><img id="logo" src="<%= data.urls.base %>/img/logo.png" class="ui centered tiny image"></a>
+        
+        <div class="ui horizontal inverted link list my-2">
+          <a class="item" href="<%= data.urls.author %>">Author</a>
+          <a class="item" href="<%= data.urls.base %>/docs/getting-started">Docs</a>
+          <a class="item" href="<%= data.urls.github %>">GitHub</a>
+          <a class="item" href="<%= data.urls.license %>">License</a>
+        </div>
+
+        <div id="copyright"><%= data.global.copyright %></div>
+      </div>
+    </div>
+
+
+    <!-- Scripts
+    =========================================== -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0SLOL7qb7Ch3gVhP0yBCVYCp1_lVwF60"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/gmaps.min.js?v=alpha.8"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/js/data.js"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/js/home.js"></script>
+
+  </body>
+</html>

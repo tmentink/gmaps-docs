@@ -1,0 +1,68 @@
+// ------------------------------------------------------------------------
+// gmaps-docs: docs/_header.scss
+// ------------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------------
+// Structure
+// ------------------------------------------------------------------------
+
+#header {
+  display        : flex;
+  border-bottom  : rem(1px) solid;
+  padding-bottom : .25rem;
+  position       : relative;
+  top            : 0;
+  left           : 0;
+  right          : 0;
+  min-height     : $header--height;
+  align-items    : center;
+  
+  @include bp-min-lg {
+    padding-bottom: 0;
+  }
+}
+
+.header__items {
+  display         : flex;
+  justify-content : flex-start;
+  flex            : 1;
+}
+
+.header__item,
+.header__logo {
+  padding    : .5rem .75rem;
+  align-self : center;
+  cursor     : pointer;
+}
+
+.header__logo {
+  padding-bottom: 0;
+
+  @include bp-min-lg {
+    padding-bottom: .5rem;
+  }
+
+  img {
+    height         : rem(43px);
+    width          : rem(43px);
+    vertical-align : middle;
+  }
+}
+
+
+// ------------------------------------------------------------------------
+// Font & Color
+// ------------------------------------------------------------------------
+
+#header {
+  border-color: $base--border-color;
+}
+
+.header__item {
+  color: $base--color;
+
+  &:hover {
+    color: $base--hover--color;
+  }
+}

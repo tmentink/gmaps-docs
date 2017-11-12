@@ -1,0 +1,58 @@
+// ------------------------------------------------------------------------
+// gmaps-docs: home/_header.scss
+// ------------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------------
+// Structure
+// ------------------------------------------------------------------------
+
+#header {
+  height     : 75vh;
+  max-height : rem(600px);
+  min-height : rem(400px);
+  position   : relative;
+  text-align : center;
+}
+
+.header__container {
+  width: 100%;
+  @include absolute-center;
+}
+
+.triangle {
+  border-right : rem(60px) solid transparent;
+  border-left  : rem(60px) solid transparent;
+  margin       : 0 auto;
+  height       : 0;
+  width        : 0;
+  position     : relative;
+  z-index      : 9;
+}
+
+.triangle--down {
+  border-top    : rem(30px) solid $header--background;
+  margin-bottom : rem(-29px);
+}
+
+
+// ------------------------------------------------------------------------
+// Font & Color
+// ------------------------------------------------------------------------
+
+#header {
+  background : $header--background;
+  color      : $header--color;
+}
+
+.header__slogan {
+  font-size: rem(30px);
+}
+
+.header__title {
+  font-size: rem(68px);
+}
+
+.version {
+  color: $header--background;
+}

@@ -1,0 +1,224 @@
+---
+layout      : "docs"
+title       : "Label"
+description : ""
+group       : "Components"
+---
+
+<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+
+<div class="ui four item stackable menu">
+  <a class="item" href="#AddingComponents">Examples</a>
+  <a class="item" href="#Methods">Methods</a>
+  <a class="item" href="#Events">Events</a>
+  <a class="item" href="#Settings">Settings</a>
+</div>
+
+<div class="ui divider my-3"></div>
+
+
+<!-- Properties
+=========================================== -->
+<h3 id="Properties">Properties</h3>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Property</th>
+      <th class="three wide column">Type</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>string</td>
+      <td>All ids are converted into strings upon creation. When searching by id, gmaps will treat <b>43</b> and <b>"43"</b> as the same. Component ids must be unique within their respective component array.</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td><a href="<%= data.urls.base %>/map">Map</a></td>
+      <td>A reference to the map the component belongs too.</td>
+    </tr>
+    <tr>
+      <td>obj</td>
+      <td>googleLabel</td>
+      <td>A reference to the googleLabel object.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Adding components
+=========================================== -->
+<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<p>
+  Every component must be assigned an id when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>label</s>, {\n" +
+  "  id: <s>myLabel</s>,\n" +
+  "  position: {\n" + 
+  "    lat: <o>37.5</o>,\n" + 
+  "    lng: <o>-120</o>\n" + 
+  "  },\n" +
+  "  text: <s>myLabel</s>\n" +
+  "})"
+%>
+
+<p>To add multiple components at once, you can pass in an array of options as the second parameter.</p>
+<%= code_segment "myMap.<bl>add</bl>(<s>labels</s>, [\n" +
+  "  {\n" +
+  "    id: <s>myLabel</s>,\n" +
+  "    position: {\n" + 
+  "      lat: <o>37.5</o>,\n" + 
+  "      lng: <o>-120</o>\n" + 
+  "    },\n" +
+  "    text: <s>myLabel</s>\n" +
+  "  },\n" +
+  "  ...\n" +
+  "])"
+%>
+
+
+<!-- Setting options
+=========================================== -->
+<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<p>
+  To set options after initialization, specify the option and value.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<%= code_segment "<c>set single option</c>\n" +
+  "myMap.<bl>labels</bl>().<bl>setOptions</bl>(<s>fontColor</s>, <s>#FF0000</s>)\n\n" +
+  "<c>set multiple options</c>\n" +
+  "myMap.<bl>labels</bl>().<bl>setOptions</bl>({\n" +
+  "  fontColor: <s>#FF0000</s>,\n" +
+  "  fontSize: <o>16</o>\n" +
+  "})"
+%>
+
+
+<!-- Getting options
+=========================================== -->
+<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<p>
+  To get the value of a specifc option, pass in the option name.
+  If you do not supply an option name, all the options will be returned in an object.
+</p>
+<%= code_segment "<c>get single option</c>\n" +
+  "myMap.<bl>labels</bl>().<bl>getOptions</bl>(<s>fontColor</s>)\n\n" +
+  "<c>get all options</c>\n" +
+  "myMap.<bl>labels</bl>().<bl>getOptions</bl>()"
+%>
+
+
+<!-- Methods
+=========================================== -->
+<h3 id="Methods">Methods</h3>
+<p>
+  Inherits all the methods from the <a href="<%= data.urls.base %>/docs/components/overview#BaseComponentMethods"">Base Component</a> class.
+  Only additional methods are listed below:
+</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="four wide column">Method</th>
+      <th class="twelve wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>getPosition()</td>
+      <td>Returns the <a href="<%= data.urls.googleDocs %>/#LatLng">LatLng</a> for the labels's position.</td>
+    </tr>
+    <tr>
+      <td>getPositionString()</td>
+      <td>Returns the labels's position in a formatted string. If the <b>delimitedStrings</b> setting is false, it will return a string in JSON format; otherwise it will return a delimited string.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Events
+=========================================== -->
+<h3 id="Events">Events</h3>
+<p>
+  Lables are custom components that don't exist in native Google Maps. Therefore events are not supported.
+</p>
+
+
+<!-- Settings
+=========================================== -->
+<h3 id="Settings">Settings</h3>
+<p>You can set the global defaults at <b>gmap.settings.labelOptions</b>.</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="three wide column">Setting</th>
+      <th class="three wide column">Default</th>
+      <th class="ten wide column">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>align</td>
+      <td>center</td>
+      <td>The horizontal text alignment. Options are <b>left</b>, <b>right</b> or <b>center</b>.</td>
+    </tr>
+    <tr>
+      <td>fontFamily</td>
+      <td>sans-serif</td>
+      <td>The font family.</td>
+    </tr>
+    <tr>
+      <td>fontSize</td>
+      <td>14</td>
+      <td>The font size in pixels.</td>
+    </tr>
+    <tr>
+      <td>fontColor</td>
+      <td>#000</td>
+      <td>The font color. All CSS3 colors are supported.</td>
+    </tr>
+    <tr>
+      <td>maxZoom</td>
+      <td></td>
+      <td>The maximum zoom level this label should be shown at.</td>
+    </tr>
+    <tr>
+      <td>minZoom</td>
+      <td></td>
+      <td>The minimum zoom level this label should be shown at.</td>
+    </tr>
+    <tr>
+      <td>position</td>
+      <td></td>
+      <td>The position of the label. This can be either a <a href="<%= data.urls.googleDocs %>#LatLng">LatLng</a>, <a href="<%= data.urls.googleDocs %>#LatLngLiteral">LatLngLiteral</a> or a formatted string based on the map's <b>delimitedStrings</b> setting.</td>
+    </tr>
+    <tr>
+      <td>strokeColor</td>
+      <td>#FFF</td>
+      <td>The stroke color. All CSS3 colors are supported.</td>
+    </tr>
+    <tr>
+      <td>strokeWeight</td>
+      <td>1</td>
+      <td>The stroke width in pixels.</td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td></td>
+      <td>The label's text.</td>
+    </tr>
+    <tr>
+      <td>visible</td>
+      <td>true</td>
+      <td>If the label is visible or not.</td>
+    </tr>
+    <tr>
+      <td>zIndex</td>
+      <td></td>
+      <td>The zIndex of the label.</td>
+    </tr>
+  </tbody>
+</table>
