@@ -32,13 +32,13 @@
     - title: "Rectangle"
       url:   "components/rectangle"
 
-# - title:   "Examples"
-#   url:     "examples/custom-shapes"
-#   isGroup: true
-#   pages:
-#     - title: "Custom shapes"
-#       url:   "examples/custom-shapes"
+- title:   "Examples"
+  url:     "examples/coming-soon"
+  isGroup: false
+  # pages:
+  #   - title: "Custom shapes"
+  #     url:   "examples/custom-shapes"
 
-#     - title: "Delimited strings"
-#       url:   "examples/delimited-strings"
+  #   - title: "Delimited strings"
+  #     url:   "examples/delimited-strings"
 ---

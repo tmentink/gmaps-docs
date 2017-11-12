@@ -1,6 +1,6 @@
 ---
 author:      "http://www.trentmentink.com"
-base:        "http://projects.trentmentink.com/gmaps"
+base:        "http://gmapsjs.com"
 download:    "https://github.com/tmentink/gmaps/archive/master.zip"
 geolocation: "https://developer.mozilla.org/en-US/docs/Web/API/Geolocation"
 github:      "https://github.com/tmentink/gmaps"

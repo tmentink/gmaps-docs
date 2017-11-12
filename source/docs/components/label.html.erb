@@ -1,14 +1,13 @@
 ---
 layout      : "docs"
 title       : "Label"
-description : ""
 group       : "Components"
 ---
 
 <h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
 
 <div class="ui four item stackable menu">
-  <a class="item" href="#AddingComponents">Examples</a>
+  <a class="item" href="#AddingLabels">Examples</a>
   <a class="item" href="#Methods">Methods</a>
   <a class="item" href="#Events">Events</a>
   <a class="item" href="#Settings">Settings</a>
@@ -48,11 +47,11 @@ group       : "Components"
 </table>
 
 
-<!-- Adding components
+<!-- Adding Labels
 =========================================== -->
-<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<h3 id="AddingLabels" class="ui header">Adding labels</h3>
 <p>
-  Every component must be assigned an id when it is added to the map.
+  Every label must be assigned an id when it is added to the map.
   If an id is not specified, gmaps will autogenerate one for you.
   All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
 </p>
@@ -66,7 +65,7 @@ group       : "Components"
   "})"
 %>
 
-<p>To add multiple components at once, you can pass in an array of options as the second parameter.</p>
+<p>To add multiple labels at once, you can pass in an array of options as the second parameter.</p>
 <%= code_segment "myMap.<bl>add</bl>(<s>labels</s>, [\n" +
   "  {\n" +
   "    id: <s>myLabel</s>,\n" +
@@ -81,7 +80,7 @@ group       : "Components"
 %>
 
 
-<!-- Setting options
+<!-- Setting Options
 =========================================== -->
 <h3 id="SettingOptions" class="ui header">Setting options</h3>
 <p>
@@ -98,7 +97,7 @@ group       : "Components"
 %>
 
 
-<!-- Getting options
+<!-- Getting Options
 =========================================== -->
 <h3 id="GettingOptions" class="ui header">Getting options</h3>
 <p>
