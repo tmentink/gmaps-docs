@@ -64,8 +64,11 @@ group       : ""
   By default the map will be initialized inside the DOM element with an id of <b>gmap</b>.
   All default settings can be overwritten by passing in an object during initialization.
 </p>
+<p>
+  <b>MapId</b>, <b>center</b> and <b>zoom</b> are required. All three have default values.
+</p>
 <%= code_segment "<p>var</p> myMap = new <bl>gmap</bl>({\n" +
-  "  mapId: <s>myMap</s>,\n" +
+  "  mapId: <s>myMap</s>,  <c>use DOM element with an id of myMap</c>\n" +
   "  mapOptions: {\n" +
   "    mapTypeId: <s>satellite</s>,\n" +
   "    zoom: <o>12</o>\n" +

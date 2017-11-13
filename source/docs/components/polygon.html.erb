@@ -4,7 +4,8 @@ title       : "Polygon"
 group       : "Components"
 ---
 
-<h1 class="mainContent__title m-0"><%= current_page.data.title %></h1>
+<h1 class="mainContent__title mt-0"><%= current_page.data.title %></h1>
+<div class="mainContent__intro">This class extends <a href="<%= data.urls.base %>/docs/components/overview#BaseComponent">Base Component</a>.</div>
 
 <div class="ui four item stackable menu">
   <a class="item" href="#AddingPolygons">Examples</a>
@@ -16,37 +17,6 @@ group       : "Components"
 <div class="ui divider my-3"></div>
 
 
-<!-- Properties
-=========================================== -->
-<h3 id="Properties">Properties</h3>
-<table class="ui celled table">
-  <thead>
-    <tr>
-      <th class="three wide column">Property</th>
-      <th class="three wide column">Type</th>
-      <th class="ten wide column">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>id</td>
-      <td>string</td>
-      <td>All ids are converted into strings upon creation. When searching by id, gmaps will treat <b>43</b> and <b>"43"</b> as the same. Component ids must be unique within their respective component array.</td>
-    </tr>
-    <tr>
-      <td>map</td>
-      <td><a href="<%= data.urls.base %>/map">Map</a></td>
-      <td>A reference to the map the component belongs too.</td>
-    </tr>
-    <tr>
-      <td>obj</td>
-      <td><a href="<%= data.urls.googleDocs %>#Polygon">Polygon</a></td>
-      <td>A reference to the native Polygon object.</td>
-    </tr>
-  </tbody>
-</table>
-
-
 <!-- Adding Polygons
 =========================================== -->
 <h3 id="AddingPolygons" class="ui header">Adding polygons</h3>
@@ -54,6 +24,8 @@ group       : "Components"
   Every polygon must be assigned an id when it is added to the map.
   If an id is not specified, gmaps will autogenerate one for you.
   All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+</p>
+  <b>Paths</b> is required.
 </p>
 <%= code_segment "myMap.<bl>add</bl>(<s>polygon</s>, {\n" +
   "  id: <s>myPolygon</s>,\n" +

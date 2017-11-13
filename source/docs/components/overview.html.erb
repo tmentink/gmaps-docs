@@ -52,10 +52,10 @@ group       : "Components"
 </p>
 <%= code_segment "<c>get all markers</c>\n" +
   "myMap.<bl>markers</bl>()\n\n" +
-  "<c>search for specific id</c>\n" +
-  "myMap.<bl>markers</bl>(<s>myMarker</s>)\n\n" +
-  "<c>search for multiple ids</c>\n" +
-  "myMap.<bl>markers</bl>([<s>myMarker</s>, <o>43</o>])"
+  "<c>search for specific polygon</c>\n" +
+  "myMap.<bl>polygons</bl>(<s>myPolygon</s>)\n\n" +
+  "<c>search for multiple labels</c>\n" +
+  "myMap.<bl>labels</bl>([<s>myLabel</s>, <o>43</o>])"
 %>
 
 
@@ -68,10 +68,34 @@ group       : "Components"
 </p>
 <%= code_segment "<c>hide all markers</c>\n" +
   "myMap.<bl>markers</bl>().hide()\n\n" +
-  "<c>show specific id</c>\n" +
-  "myMap.<bl>markers</bl>(<s>myMarker</s>).show()\n\n" +
-  "<c>toggle multipe ids</c>\n" +
-  "myMap.<bl>markers</bl>([<s>myMarker</s>, <o>43</o>]).toggle()"
+  "<c>show specific polygon</c>\n" +
+  "myMap.<bl>polygons</bl>(<s>myPolygon</s>).show()\n\n" +
+  "<c>toggle multiple labels</c>\n" +
+  "myMap.<bl>labels</bl>([<s>myLabel</s>, <o>43</o>]).toggle()"
+%>
+
+
+<!-- Chaining Methods
+=========================================== -->
+<h3 id="ChainingMethods" class="ui header">Chaining methods</h3>
+<p>
+  Most methods in gmaps can be changed together allowing for shorter and more readable code.
+</p>
+<%= code_segment "<c>add and immediately zoom to marker</c>\n" +
+  "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
+  "  id: <s>myMarker</s>,\n" + 
+  "  position: {\n" + 
+  "    lat: <o>51.178835</o>,\n" + 
+  "    lng: <o>-1.826240</o>\n" + 
+  "  }\n" +
+  "}).<bl>zoom</bl>()"
+%>
+
+<p>
+  The <b>others</b> method allows you to easily call methods for two groups of components.
+</p>
+<%= code_segment "<c>show specific marker and hide all others</c>\n" +
+  "myMap.<bl>markers</bl>(<s>myMarker</s>).<bl>show</bl>().<bl>others</bl>().<bl>hide</bl>()"
 %>
 
 
