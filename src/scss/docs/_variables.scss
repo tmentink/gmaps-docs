@@ -8,10 +8,13 @@
 // ------------------------------------------------------------------------
 
 $base--background-color  : #F9F9F9;
-$base--border-color      : rgba(black, .25);
+$base--border-color      : rgba(black, .15);
 $base--color             : rgba(black, .65);
 $base--hover--color      : rgba(black, .85);
 
+$header--background      : #2E2E2E;
+$header--color           : rgba(white, .75);
+$header--hover--color    : white;
 $header--height          : rem(60px);
 
 // header height + search height

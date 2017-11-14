@@ -19,7 +19,7 @@
     <div id="header">
       <div class="header__container">
         <a id="version" class="version ui basic label m-0" href="<%= data.urls.github %>"></a>
-        <h1 class="header__title mt-0 mb-2">gmaps</h1>
+        <h1 class="header__title mt-0 mb-2">gmaps.js</h1>
         <h2 class="header__slogan mt-0 mb-4">The way maps were meant to be made</h2>
 
         <a href="<%= data.urls.base %>/docs/getting-started" class="ui huge primary button">Explore Docs</a>
@@ -35,15 +35,15 @@
 
     <!-- Footer
     =========================================== -->
-    <div id="footer" class="ui black inverted vertical footer segment">
-      <div id="footer_container">
+    <div id="footer" class="ui vertical footer segment">
+      <div class="footer__container">
         <a href="<%= data.urls.home %>"><img id="logo" src="<%= data.urls.base %>/img/logo.png" class="ui centered tiny image"></a>
         
-        <div class="ui horizontal inverted link list my-2">
-          <a class="item" href="<%= data.urls.author %>">Author</a>
-          <a class="item" href="<%= data.urls.base %>/docs/getting-started">Docs</a>
-          <a class="item" href="<%= data.urls.github %>">GitHub</a>
-          <a class="item" href="<%= data.urls.license %>">License</a>
+        <div class="footer__items">
+          <a class="footer__item" href="<%= data.urls.author %>">Author</a>
+          <a class="footer__item" href="<%= data.urls.base %>/docs/getting-started">Docs</a>
+          <a class="footer__item" href="<%= data.urls.github %>">GitHub</a>
+          <a class="footer__item" href="<%= data.urls.license %>">License</a>
         </div>
 
         <div id="copyright"><%= data.global.copyright %></div>

@@ -60,9 +60,9 @@ group       : "Components"
 %>
 
 
-<!-- Setting Options
+<!-- Set Options
 =========================================== -->
-<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<h3 id="SetOptions" class="ui header">Set options</h3>
 <p>
   To set options after initialization, specify the option and value.
   You can set multiple options at once by passing in an object as the only parameter.
@@ -77,9 +77,9 @@ group       : "Components"
 %>
 
 
-<!-- Getting Options
+<!-- Get Options
 =========================================== -->
-<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<h3 id="GetOptions" class="ui header">Get options</h3>
 <p>
   To get the value of a specifc option, pass in the option name.
   If you do not supply an option name, all the options will be returned in an object.
@@ -88,6 +88,43 @@ group       : "Components"
   "myMap.<bl>circles</bl>().<bl>getOptions</bl>(<s>fillColor</s>)\n\n" +
   "<c>get all options</c>\n" +
   "myMap.<bl>circles</bl>().<bl>getOptions</bl>()"
+%>
+
+<p>
+  If the <b>getOptions</b> method is called on a CircleArray containing multiple circles, the return value will be formatted as an object using the <b>ids</b> as the key.
+</p>
+<%= code_segment "myMap.<bl>circles</bl>([<s>myCircle</s>, <o>43</o>]).<bl>getOptions</bl>()\n\n" +
+  "<c>returns</c>\n" +
+  "{\n" +
+  "  <s>myCircle</s>: { ... },  <c>An object containing all the circle's options</c>\n" +
+  "  <s>43</s>: { ... }\n" +
+  "}"
+%>
+
+
+<!-- Get Bounds
+=========================================== -->
+<h3 id="GetBounds" class="ui header">Get bounds</h3>
+<p>
+  When the <b>getBounds</b> method is called on a CircleArray, it will return a <a href="<%= data.urls.googleDocs %>#LatLngBounds">LatLngBounds</a> containing all the circles within the array.
+</p>
+<%= code_segment "<c>get bounds for all circles</c>\n" +
+  "myMap.<bl>circles</bl>().<bl>getBounds</bl>()\n\n" +
+  "<c>get bounds for single circle</c>\n" +
+  "myMap.<bl>circles</bl>(<s>myCircle</s>).<bl>getBounds</bl>()"
+%>
+
+
+<!-- Zoom
+=========================================== -->
+<h3 id="Zoom" class="ui header">Zoom</h3>
+<p>
+  The <b>zoom</b> method will calculate the bounds and automatically set the map's viewport to it.
+</p>
+<%= code_segment "<c>zoom to all circles</c>\n" +
+  "myMap.<bl>circles</bl>().<bl>zoom</bl>()\n\n" +
+  "<c>zoom to single circle</c>\n" +
+  "myMap.<bl>circles</bl>(<s>myCircle</s>).<bl>zoom</bl>()"
 %>
 
 

@@ -50,9 +50,9 @@ group       : "Components"
 %>
 
 
-<!-- Setting Options
+<!-- Set Options
 =========================================== -->
-<h3 id="SettingOptions" class="ui header">Setting options</h3>
+<h3 id="SetOptions" class="ui header">Set options</h3>
 <p>
   To set options after initialization, specify the option and value.
   You can set multiple options at once by passing in an object as the only parameter.
@@ -67,9 +67,9 @@ group       : "Components"
 %>
 
 
-<!-- Getting Options
+<!-- Get Options
 =========================================== -->
-<h3 id="GettingOptions" class="ui header">Getting options</h3>
+<h3 id="GetOptions" class="ui header">Get options</h3>
 <p>
   To get the value of a specifc option, pass in the option name.
   If you do not supply an option name, all the options will be returned in an object.
@@ -78,6 +78,91 @@ group       : "Components"
   "myMap.<bl>markers</bl>().<bl>getOptions</bl>(<s>opacity</s>)\n\n" +
   "<c>get all options</c>\n" +
   "myMap.<bl>markers</bl>().<bl>getOptions</bl>()"
+%>
+
+<p>
+  If the <b>getOptions</b> method is called on a MarkerArray containing multiple markers, the return value will be formatted as an object using the <b>ids</b> as the key.
+</p>
+<%= code_segment "myMap.<bl>markers</bl>([<s>myMarker</s>, <o>43</o>]).<bl>getOptions</bl>()\n\n" +
+  "<c>returns</c>\n" +
+  "{\n" +
+  "  <s>myMarker</s>: { ... },  <c>An object containing all the marker's options</c>\n" +
+  "  <s>43</s>: { ... }\n" +
+  "}"
+%>
+
+
+<!-- Get Bounds
+=========================================== -->
+<h3 id="GetBounds" class="ui header">Get bounds</h3>
+<p>
+  When the <b>getBounds</b> method is called on a MarkerArray, it will return a <a href="<%= data.urls.googleDocs %>#LatLngBounds">LatLngBounds</a> containing all the markers within the array.
+</p>
+<%= code_segment "<c>get bounds for all markers</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>getBounds</bl>()\n\n" +
+  "<c>get bounds for single marker</c>\n" +
+  "myMap.<bl>markers</bl>(<s>myMarker</s>).<bl>getBounds</bl>()"
+%>
+
+
+<!-- Zoom
+=========================================== -->
+<h3 id="Zoom" class="ui header">Zoom</h3>
+<p>
+  The <b>zoom</b> method will calculate the bounds and automatically set the map's viewport to it.
+</p>
+<%= code_segment "<c>zoom to all markers</c>\n" +
+  "myMap.<bl>markers</bl>().<bl>zoom</bl>()\n\n" +
+  "<c>zoom to single marker</c>\n" +
+  "myMap.<bl>markers</bl>(<s>myMarker</s>).<bl>zoom</bl>()"
+%>
+
+
+<!-- Get Position
+=========================================== -->
+<h3 id="GetPosition" class="ui header">Get position</h3>
+<p>
+  The <b>getPosition</b> method will return the marker's <b>position</b> property.
+</p>
+<%= code_segment "myMap.<bl>markers</bl>().<bl>getPosition</bl>()" %>
+
+<p>
+  If the <b>getPosition</b> method is called on a MarkerArray containing multiple markers, the return value will be formatted as an object using the <b>ids</b> as the key.
+</p>
+<%= code_segment "myMap.<bl>markers</bl>([<s>myMarker</s>, <o>43</o>]).<bl>getPosition</bl>()\n\n" +
+  "<c>returns</c>\n" +
+  "{\n" +
+  "  <s>myMarker</s>: _.F,  <c>LatLng representing the marker's position</c>\n" +
+  "  <s>43</s>: _.F\n" +
+  "}"
+%>
+
+
+<!-- Get Position String
+=========================================== -->
+<h3 id="GetPosition" class="ui header">Get position string</h3>
+<p>
+  The <b>getPositionString</b> method works the same as <b>getPosition</b> except the return value is a formatted string based on the map's settings.
+  By default, strings will be in JSON format.
+</p>
+<%= code_segment "myMap.<bl>markers</bl>().<bl>getPositionString</bl>()\n\n" +
+  "<c>returns</c>\n" +
+  "<s>{<s>lat</s>:51.178835,<s>lng</s>:-1.826240}</s>"
+%>
+
+<p>
+  If the map's <b>delimitedStrings</b> setting is set to true, strings will be formatted using the map's <b>delimiter</b> settings.
+</p>
+<%= code_segment "<c>default delimiter settings</c>\n" +
+  "{\n" +
+  "  latLng: <s>|</s>,\n" +
+  "  latLngArray: <s>~</s>,\n" +
+  "  latLngBounds: <s>|</s>\n" +
+  "}\n\n" +
+  "myMap.settings.delimitedStrings = <o>true</o>\n" +
+  "myMap.<bl>markers</bl>().<bl>getPositionString</bl>()\n\n" +
+  "<c>returns</c>\n" +
+  "<s>51.178835,-1.826240</s>"
 %>
 
 

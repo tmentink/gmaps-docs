@@ -8,13 +8,15 @@
 // ------------------------------------------------------------------------
 
 .sidemenu {
-  position : relative;
-  width    : 100vw;
+  position      : relative;
+  width         : 100vw;
+  border-bottom : rem(1px) solid;
 
   @include bp-min-lg {
-    border-right : rem(1px) solid;
-    height       : calc(100vh - #{$header--height});
-    max-width    : $sidemenu--max-width;
+    border-right  : rem(1px) solid;
+    border-bottom : 0;
+    height        : calc(100vh - #{$header--height});
+    max-width     : $sidemenu--max-width;
   }
 }
 

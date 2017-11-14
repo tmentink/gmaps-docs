@@ -8,7 +8,6 @@
 // ------------------------------------------------------------------------
 
 .mainContent {
-  border-top : rem(1px) solid;
   padding    : 1rem;
   min-height : calc(100vh - #{$mainContent--top});
   width      : 100vw;
@@ -84,12 +83,11 @@
 .mainContent {
   position : absolute;
   top      : $mainContent--top;
-  @include transition("top", .75s, cubic-bezier(0.19, 1, 0.22, 1));
+  @include transition("top", .3s, "ease-in-out");
   
   @include bp-min-lg {
-    border-top : none;
-    position   : relative;
-    top        : initial;
+    position : relative;
+    top      : initial;
   }
 }
 

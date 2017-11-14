@@ -9,7 +9,6 @@
 
 #header {
   display        : flex;
-  border-bottom  : rem(1px) solid;
   padding-bottom : .25rem;
   position       : relative;
   top            : 0;
@@ -56,13 +55,14 @@
 // ------------------------------------------------------------------------
 
 #header {
-  border-color: $base--border-color;
+  background: $header--background;
 }
 
 .header__item {
-  color: $base--color;
+  color: $header--color;
+  @include transition("color", .1s);
 
   &:hover {
-    color: $base--hover--color;
+    color: $header--hover--color;
   }
 }

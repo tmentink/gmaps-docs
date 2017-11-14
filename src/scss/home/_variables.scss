@@ -7,5 +7,9 @@
 // Variables
 // ------------------------------------------------------------------------
 
-$header--background : #212121;
-$header--color      : #FFF;
+$header--background    : #2E2E2E;
+$header--color         : white;
+
+$footer--background    : $header--background;
+$footer--color         : rgba(white, 0.65);
+$footer--hover--color  : white;

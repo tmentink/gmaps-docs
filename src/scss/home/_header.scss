@@ -53,6 +53,10 @@
   font-size: rem(68px);
 }
 
-.version {
+#version {
   color: $header--background;
+
+  &:hover {
+    color: $header--background;
+  }
 }
