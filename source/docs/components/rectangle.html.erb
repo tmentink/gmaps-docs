@@ -11,7 +11,7 @@ group       : "Components"
   <a class="item" href="#AddingRectangles">Examples</a>
   <a class="item" href="#Methods">Methods</a>
   <a class="item" href="#Events">Events</a>
-  <a class="item" href="#Settings">Settings</a>
+  <a class="item" href="#Options">Options</a>
 </div>
 
 <div class="ui divider my-3"></div>
@@ -21,12 +21,12 @@ group       : "Components"
 =========================================== -->
 <h3 id="AddingRectangles" class="ui header">Adding rectangles</h3>
 <p>
-  Every rectangle must be assigned an id when it is added to the map.
-  If an id is not specified, gmaps will autogenerate one for you.
-  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+  To add rectangles to the map, pass in <b>"rectangle"</b> and the desired <b>options</b> to the <b>add</b> method.  
+  All <a href="<%= data.urls.base %>/docs/map#RectanlgeOptions">default options</a> can be overwritten by passing in an object.
 </p>
-  <b>Bounds</b> is required.
-</p>
+<div class="ui info message">
+  <b>Id</b>  and <b>bounds</b> are required. If an id is not specified, gmaps will autogenerate one.
+</div>
 <%= code_segment "myMap.<bl>add</bl>(<s>rectangle</s>, {\n" +
   "  id: <s>myRectangle</s>,\n" +
   "  bounds: {\n" + 
@@ -58,7 +58,7 @@ group       : "Components"
 =========================================== -->
 <h3 id="SetOptions" class="ui header">Set options</h3>
 <p>
-  To set options after initialization, specify the option and value.
+  To set a rectangle's options after initialization, specify the <b>option name</b> and <b>value</b>.
   You can set multiple options at once by passing in an object as the only parameter.
 </p>
 <%= code_segment "<c>set single option</c>\n" +
@@ -75,8 +75,8 @@ group       : "Components"
 =========================================== -->
 <h3 id="GetOptions" class="ui header">Get options</h3>
 <p>
-  To get the value of a specifc option, pass in the option name.
-  If you do not supply an option name, all the options will be returned in an object.
+  To get the value of a specifc option, pass in the <b>option name</b>.
+  If you do not supply an option name, <b>all</b> the options will be returned in an object.
 </p>
 <%= code_segment "<c>get single option</c>\n" +
   "myMap.<bl>rectangles</bl>().<bl>getOptions</bl>(<s>fillColor</s>)\n\n" +
@@ -100,7 +100,7 @@ group       : "Components"
 =========================================== -->
 <h3 id="GetBounds" class="ui header">Get bounds</h3>
 <p>
-  When the <b>getBounds</b> method is called on a RectangleArray, it will return a <a href="<%= data.urls.googleDocs %>#LatLngBounds">LatLngBounds</a> containing all the rectangles within the array.
+  When the <b>getBounds</b> method is called on a RectangleArray, it will return a <a href="<%= data.urls.googleDocs %>#LatLngBounds">LatLngBounds</a> containing <b>all</b> the rectangles within the array.
 </p>
 <%= code_segment "<c>get bounds for all rectangles</c>\n" +
   "myMap.<bl>rectangles</bl>().<bl>getBounds</bl>()\n\n" +
@@ -245,18 +245,20 @@ group       : "Components"
 </table>
 
 
-<!-- Settings
+<!-- Options
 =========================================== -->
-<h3 id="Settings">Settings</h3>
-<p>You can set the global defaults at <b>gmap.settings.rectangleOptions</b>.</p>
+<h3 id="Options">Options</h3>
 <p>
-  Only gmaps specifc settings are listed below.
+  The <a href="<%= data.urls.base %>/docs/map#RectangleOptions">default options</a> are set at <b>gmap.settings.rectangleOptions</b>.
+</p>
+<p>
+  Only gmaps specifc options are listed below.
   Refer to <a href="<%= data.urls.googleDocs %>#RectangleOptions">Google's documentation</a> for a full list of available options.
 </p>
 <table class="ui celled table">
   <thead>
     <tr>
-      <th class="three wide column">Setting</th>
+      <th class="three wide column">Option</th>
       <th class="three wide column">Default</th>
       <th class="ten wide column">Description</th>
     </tr>

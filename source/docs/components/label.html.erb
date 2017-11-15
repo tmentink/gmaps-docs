@@ -11,7 +11,7 @@ group       : "Components"
   <a class="item" href="#AddingLabels">Examples</a>
   <a class="item" href="#Methods">Methods</a>
   <a class="item" href="#Events">Events</a>
-  <a class="item" href="#Settings">Settings</a>
+  <a class="item" href="#Options">Options</a>
 </div>
 
 <div class="ui divider my-3"></div>
@@ -21,12 +21,12 @@ group       : "Components"
 =========================================== -->
 <h3 id="AddingLabels" class="ui header">Adding labels</h3>
 <p>
-  Every label must be assigned an id when it is added to the map.
-  If an id is not specified, gmaps will autogenerate one for you.
-  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+  To add labels to the map, pass in <b>"label"</b> and the desired <b>options</b> to the <b>add</b> method.  
+  All <a href="<%= data.urls.base %>/docs/map#LabelOptions">default options</a> can be overwritten by passing in an object.
 </p>
-  <b>Position</b> and <b>text</b> are required.
-</p>
+<div class="ui info message">
+  <b>Id</b>, <b>position</b> and <b>text</b> are required. If an id is not specified, gmaps will autogenerate one.
+</div>
 <%= code_segment "myMap.<bl>add</bl>(<s>label</s>, {\n" +
   "  id: <s>myLabel</s>,\n" +
   "  position: {\n" + 
@@ -56,7 +56,7 @@ group       : "Components"
 =========================================== -->
 <h3 id="SetOptions" class="ui header">Set options</h3>
 <p>
-  To set options after initialization, specify the option and value.
+  To set a label's options after initialization, specify the <b>option name</b> and <b>value</b>.
   You can set multiple options at once by passing in an object as the only parameter.
 </p>
 <%= code_segment "<c>set single option</c>\n" +
@@ -73,8 +73,8 @@ group       : "Components"
 =========================================== -->
 <h3 id="GetOptions" class="ui header">Get options</h3>
 <p>
-  To get the value of a specifc option, pass in the option name.
-  If you do not supply an option name, all the options will be returned in an object.
+  To get the value of a specifc option, pass in the <b>option name</b>.
+  If you do not supply an option name, <b>all</b> the options will be returned in an object.
 </p>
 <%= code_segment "<c>get single option</c>\n" +
   "myMap.<bl>labels</bl>().<bl>getOptions</bl>(<s>fontColor</s>)\n\n" +
@@ -145,23 +145,22 @@ group       : "Components"
 <h3 id="GetPosition" class="ui header">Get position string</h3>
 <p>
   The <b>getPositionString</b> method works the same as <b>getPosition</b> except the return value is a formatted string based on the map's settings.
-  By default, strings will be in JSON format.
 </p>
+<div class="ui info message">
+  By default, strings will be in <b>JSON</b> format.
+</div>
 <%= code_segment "myMap.<bl>labels</bl>().<bl>getPositionString</bl>()\n\n" +
   "<c>returns</c>\n" +
   "<s>{<s>lat</s>:37.5,<s>lng</s>:-120}</s>"
 %>
 
 <p>
-  If the map's <b>delimitedStrings</b> setting is set to true, strings will be formatted using the map's <b>delimiter</b> settings.
+  If the map's <b>delimitedStrings</b> setting is true, strings will be formatted using the map's <b>delimiter</b> settings.
 </p>
-<%= code_segment "<c>default delimiter settings</c>\n" +
-  "{\n" +
-  "  latLng: <s>|</s>,\n" +
-  "  latLngArray: <s>~</s>,\n" +
-  "  latLngBounds: <s>|</s>\n" +
-  "}\n\n" +
-  "myMap.settings.delimitedStrings = <o>true</o>\n" +
+<p>
+  The <a href="<%= data.urls.base %>/docs/map#Delimiter">default options</a> are set at <b>gmap.settings.delimiter</b>.
+</p>
+<%= code_segment "myMap.settings.delimitedStrings = <o>true</o>\n" +
   "myMap.<bl>labels</bl>().<bl>getPositionString</bl>()\n\n" +
   "<c>returns</c>\n" +
   "<s>37.5,-120</s>"
@@ -205,12 +204,14 @@ group       : "Components"
 
 <!-- Settings
 =========================================== -->
-<h3 id="Settings">Settings</h3>
-<p>You can set the global defaults at <b>gmap.settings.labelOptions</b>.</p>
+<h3 id="Options">Options</h3>
+<p>
+  The <a href="<%= data.urls.base %>/docs/map#LabelOptions">default options</a> are set at <b>gmap.settings.labelOptions</b>.
+</p>
 <table class="ui celled table">
   <thead>
     <tr>
-      <th class="three wide column">Setting</th>
+      <th class="three wide column">Option</th>
       <th class="three wide column">Default</th>
       <th class="ten wide column">Description</th>
     </tr>

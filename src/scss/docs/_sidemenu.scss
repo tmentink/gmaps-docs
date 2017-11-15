@@ -49,6 +49,12 @@
   flex: 1 1 auto;
 }
 
+// These are required since docsearch alters the input
+#txtSearch {
+  padding-left  : 2.67142857rem !important;
+  padding-right : 1rem !important;
+}
+
 #btnSidemenu {
   cursor: pointer;
 }

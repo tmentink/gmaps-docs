@@ -51,7 +51,7 @@ group       : ""
     <tr>
       <td>settings</td>
       <td>Object</td>
-      <td>Holds the map's local settings.</td>
+      <td>Holds the map's local <a href="#Settings">settings</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -62,11 +62,11 @@ group       : ""
 <h3 id="Initializing" class="ui header">Initializing</h3>
 <p>
   By default the map will be initialized inside the DOM element with an id of <b>gmap</b>.
-  All default settings can be overwritten by passing in an object during initialization.
+  All <a href="#Settings">default settings</a> can be overwritten by passing in an object during initialization.
 </p>
-<p>
+<div class="ui info message">
   <b>MapId</b>, <b>center</b> and <b>zoom</b> are required. All three have default values.
-</p>
+</div>
 <%= code_segment "<p>var</p> myMap = new <bl>gmap</bl>({\n" +
   "  mapId: <s>myMap</s>,  <c>use DOM element with an id of myMap</c>\n" +
   "  mapOptions: {\n" +
@@ -77,30 +77,16 @@ group       : ""
 %>
 
 
-<!-- Setting options
-=========================================== -->
-<h3 id="SettingOptions" class="ui header">Setting options</h3>
-<p>
-  To set options after initialization, specify the option and value.
-  You can set multiple options at once by passing in an object as the only parameter.
-</p>
-<%= code_segment "<c>single option</c>\n" +
-  "myMap.<bl>setOptions</bl>(<s>mapTypeId</s>, <s>roadmap</s>)\n\n" +
-  "<c>multiple options</c>\n" +
-  "myMap.<bl>setOptions</bl>({\n" +
-  "  mapTypeId: <s>roadmap</s>,\n" +
-  "  mapTypeControl: <o>true</o>\n" +
-  "})"
-%>
-
-
 <!-- Adding components
 =========================================== -->
-<h3 id="AddingComponents" class="ui header">Adding components</h3>
+<h3 id="AddComponents" class="ui header">Add components</h3>
 <p>
-  Every component must be assigned an id when it is added to the map.
-  If an id is not specified, gmaps will autogenerate one for you.
+  To add components to the map, use the <b>add</b> method and specify the <b>component type</b> and <b>options</b>.
 </p>
+<div class="ui info message">
+  Every component must be assigned an <b>id</b> when it is added to the map.
+  If an id is not specified, gmaps will autogenerate one for you.
+</div>
 <%= code_segment "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
   "  id: <s>myMarker</s>,\n" +
   "  position: {\n" + 
@@ -115,7 +101,7 @@ group       : ""
 </p>
 <%= code_segment "myMap.<bl>add</bl>(<s>markers</s>, [\n" +
   "  {\n" +
-  "    id: <o>1</o>,\n" +  
+  "    id: <o>43</o>,\n" +  
   "    position: {\n" + 
   "      lat: <o>37.5</o>,\n" + 
   "      lng: <o>-120</o>\n" + 
@@ -126,19 +112,56 @@ group       : ""
 %>
 
 
-<!-- Removing components
+<!-- Remove components
 =========================================== -->
-<h3 id="RemoveComponents" class="ui header">Removing components</h3>
+<h3 id="RemoveComponents" class="ui header">Remove components</h3>
 <p>
-  To remove components from the map, specify the component type and the ids you would like to remove.
-  If an id parameter is not supplied, it will remove all components of the specified type.
+  To remove components from the map, use the <b>remove</b> method and specify the <b>component type</b> and the <b>id(s)</b>. 
+</p>
+<p>
+  If an id parameter is not supplied, it will remove <b>all</b> components of the specified type.
 </p>
 <%= code_segment "<c>single id</c>\n" +
   "myMap.<bl>remove</bl>(<s>marker</s>, <s>myMarker</s>)\n\n" +
   "<c>multiple ids</c>\n" +
-  "myMap.<bl>remove</bl>(<s>markers</s>, [<o>1</o>, <o>2</o>])\n\n" +
+  "myMap.<bl>remove</bl>(<s>markers</s>, [<s>myMarker</s>, <o>43</o>])\n\n" +
   "<c>all markers</c>\n" +
   "myMap.<bl>remove</bl>(<s>markers</s>)"
+%>
+
+
+<!-- Set options
+=========================================== -->
+<h3 id="SetOptions" class="ui header">Set options</h3>
+<p>
+  To set the map's options after initialization, specify the <b>option name</b> and <b>value</b>.
+  You can set multiple options at once by passing in an object as the only parameter.
+</p>
+<div class="ui info message">
+  This method is only for setting <b>mapOptions</b>.
+  The map's other local settings must be updated manually.
+</div>
+<%= code_segment "<c>single option</c>\n" +
+  "myMap.<bl>setOptions</bl>(<s>mapTypeId</s>, <s>roadmap</s>)\n\n" +
+  "<c>multiple options</c>\n" +
+  "myMap.<bl>setOptions</bl>({\n" +
+  "  mapTypeId: <s>roadmap</s>,\n" +
+  "  mapTypeControl: <o>true</o>\n" +
+  "})"
+%>
+
+
+<!-- Get Options
+=========================================== -->
+<h3 id="GetOptions" class="ui header">Get options</h3>
+<p>
+  To get the value of a specifc option, pass in the <b>option name</b>.
+  If you do not supply an option name, <b>all</b> the options will be returned in an object.
+</p>
+<%= code_segment "<c>get single option</c>\n" +
+  "myMap.<bl>getOptions</bl>(<s>mapTypeId</s>)\n\n" +
+  "<c>get all options</c>\n" +
+  "myMap.<bl>getOptions</bl>()"
 %>
 
 
@@ -146,16 +169,20 @@ group       : ""
 =========================================== -->
 <h3 id="FitBounds" class="ui header">Fit bounds</h3>
 <p>
-  With gmaps, you can pass in an object with the components and ids you want to center the map's viewport on.
+  The <b>fitBounds</b> method works the same as the native method.
+  It accepts a <a href="<%= data.urls.googleDocs %>/#LatLngBounds">LatLngBounds</a> and sets the map's viewport to it.
+</p>
+<p>
+  With gmaps, you can also pass in an object with the <b>component(s)</b> and <b>id(s)</b> you want to center the map's viewport on.
   Pass in <b>null</b> to select all components for that type.
 </p>
 <%= code_segment "myMap.<bl>fitBounds</bl>({\n" +
-  "  markers: [<o>1</o>, <o>2</o>],\n" +
+  "  markers: [<s>myMarker</s>, <o>43</o>],\n" +
   "  polygons: <o>null</o>  <c>select all polygons</c>\n" +
   "})"
 %>
 
-<p>You can also pass in <b>initial</b> to reset the map's bounds.</p>
+<p>You can also pass in <b>initial</b> to set the map's viewport to its initial value.</p>
 <%= code_segment "myMap.<bl>fitBounds</bl>(<s>initial</s>)" %>
 
 
@@ -434,7 +461,7 @@ group       : ""
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr id="CircleOptions">
       <td>circleOptions</td>
       <td><%= code_segment "{\n" +
         "  clickable: <o>true</o>,\n" +
@@ -449,14 +476,14 @@ group       : ""
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for circle components.</td>
+      <td>The default options for circle components. Refer to <a href="<%= data.urls.googleDocs %>#CircleOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="DelimitedStrings">
       <td>delimitedStrings</td>
       <td>false</td>
       <td>If true, the map will create/parse delimited strings. Otherwise strings will be in JSON format.</td>
     </tr>
-    <tr>
+    <tr id="Delimiter">
       <td>delimiter</td>
       <td><%= code_segment "{\n" +
         "  latLng: <s>|</s>,\n" +
@@ -466,7 +493,7 @@ group       : ""
       %></td>
       <td>The characters used to create/parse delimited strings.</td>
     </tr>
-    <tr>
+    <tr id="LabelOptions">
       <td>labelOptions</td>
       <td><%= code_segment "{\n" +
         "  align: <s>center</s>,\n" +
@@ -479,12 +506,12 @@ group       : ""
       %></td>
       <td>The default options for label components.</td>
     </tr>
-    <tr>
+    <tr id="MapID">
       <td>mapId</td>
       <td>gmap</td>
       <td>The id of the DOM element the map will be rendered inside.</td>
     </tr>
-    <tr>
+    <tr id="MapOptions">
       <td>mapOptions</td>
       <td><%= code_segment "{\n" +
         "  center: {\n" + 
@@ -505,7 +532,7 @@ group       : ""
       %></td>
       <td>The default options for the map. Refer to <a href="<%= data.urls.googleDocs %>#MapOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="MarkerOptions">
       <td>markerOptions</td>
       <td><%= code_segment "{\n" +
         "  clickable: <o>true</o>,\n" +
@@ -516,9 +543,9 @@ group       : ""
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for marker components.</td>
+      <td>The default options for marker components. Refer to <a href="<%= data.urls.googleDocs %>#MarkerOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="PolygonOptions">
       <td>polygonOptions</td>
       <td><%= code_segment "{\n" +
         "  clickable: <o>true</o>,\n" +
@@ -533,9 +560,9 @@ group       : ""
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for polygon components.</td>
+      <td>The default options for polygon components. Refer to <a href="<%= data.urls.googleDocs %>#PolygonOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="PolylineOptions">
       <td>polylineOptions</td>
       <td><%= code_segment "{\n" +
         "  clickable: <o>true</o>,\n" +
@@ -548,9 +575,9 @@ group       : ""
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for polyline components.</td>
+      <td>The default options for polyline components. Refer to <a href="<%= data.urls.googleDocs %>#PolylineOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="RectangleOptions">
       <td>rectangleOptions</td>
       <td><%= code_segment "{\n" +
         "  clickable: <o>true</o>,\n" +
@@ -565,9 +592,9 @@ group       : ""
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for rectangle components.</td>
+      <td>The default options for rectangle components. Refer to <a href="<%= data.urls.googleDocs %>#RectangleOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
-    <tr>
+    <tr id="UrlPrecision">
       <td>urlPrecision</td>
       <td>5</td>
       <td>How many decimal places lat/lng values are rounded to.</td>
@@ -591,7 +618,7 @@ group       : ""
     <tr>
       <td>onLoad(map)</td>
       <td>Map</td>
-      <td>Is called after the map's tiles have finished loading.</td>
+      <td>Is called after the map's tiles have finished loading for the first time.</td>
     </tr>
   </tbody>
 </table>

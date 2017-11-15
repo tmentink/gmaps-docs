@@ -11,7 +11,7 @@ group       : "Components"
   <a class="item" href="#AddingMarkers">Examples</a>
   <a class="item" href="#Methods">Methods</a>
   <a class="item" href="#Events">Events</a>
-  <a class="item" href="#Settings">Settings</a>
+  <a class="item" href="#Options">Options</a>
 </div>
 
 <div class="ui divider my-3"></div>
@@ -21,12 +21,12 @@ group       : "Components"
 =========================================== -->
 <h3 id="AddingMarkers" class="ui header">Adding markers</h3>
 <p>
-  Every marker must be assigned an id when it is added to the map.
-  If an id is not specified, gmaps will autogenerate one for you.
-  All default <a href="#Settings">settings</a> can be overwritten by passing in an object.
+  To add markers to the map, pass in <b>"marker"</b> and the desired <b>options</b> to the <b>add</b> method.  
+  All <a href="<%= data.urls.base %>/docs/map#MarkerOptions">default options</a> can be overwritten by passing in an object.
 </p>
-  <b>Position</b> is required.
-</p>
+<div class="ui info message">
+  <b>Id</b> and <b>position</b> are required. If an id is not specified, gmaps will autogenerate one.
+</div>
 <%= code_segment "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
   "  id: <s>myMarker</s>,\n" +
   "  position: {\n" + 
@@ -54,7 +54,7 @@ group       : "Components"
 =========================================== -->
 <h3 id="SetOptions" class="ui header">Set options</h3>
 <p>
-  To set options after initialization, specify the option and value.
+  To set a marker's options after initialization, specify the <b>option name</b> and <b>value</b>.
   You can set multiple options at once by passing in an object as the only parameter.
 </p>
 <%= code_segment "<c>set single option</c>\n" +
@@ -71,8 +71,8 @@ group       : "Components"
 =========================================== -->
 <h3 id="GetOptions" class="ui header">Get options</h3>
 <p>
-  To get the value of a specifc option, pass in the option name.
-  If you do not supply an option name, all the options will be returned in an object.
+  To get the value of a specifc option, pass in the <b>option name</b>.
+  If you do not supply an option name, <b>all</b> the options will be returned in an object.
 </p>
 <%= code_segment "<c>get single option</c>\n" +
   "myMap.<bl>markers</bl>().<bl>getOptions</bl>(<s>opacity</s>)\n\n" +
@@ -143,23 +143,22 @@ group       : "Components"
 <h3 id="GetPosition" class="ui header">Get position string</h3>
 <p>
   The <b>getPositionString</b> method works the same as <b>getPosition</b> except the return value is a formatted string based on the map's settings.
-  By default, strings will be in JSON format.
 </p>
+<div class="ui info message">
+  By default, strings will be in <b>JSON</b> format.
+</div>
 <%= code_segment "myMap.<bl>markers</bl>().<bl>getPositionString</bl>()\n\n" +
   "<c>returns</c>\n" +
   "<s>{<s>lat</s>:51.178835,<s>lng</s>:-1.826240}</s>"
 %>
 
 <p>
-  If the map's <b>delimitedStrings</b> setting is set to true, strings will be formatted using the map's <b>delimiter</b> settings.
+  If the map's <b>delimitedStrings</b> setting is true, strings will be formatted using the map's <b>delimiter</b> settings.
 </p>
-<%= code_segment "<c>default delimiter settings</c>\n" +
-  "{\n" +
-  "  latLng: <s>|</s>,\n" +
-  "  latLngArray: <s>~</s>,\n" +
-  "  latLngBounds: <s>|</s>\n" +
-  "}\n\n" +
-  "myMap.settings.delimitedStrings = <o>true</o>\n" +
+<p>
+  The <a href="<%= data.urls.base %>/docs/map#Delimiter">default options</a> are set at <b>gmap.settings.delimiter</b>.
+</p>
+<%= code_segment "myMap.settings.delimitedStrings = <o>true</o>\n" +
   "myMap.<bl>markers</bl>().<bl>getPositionString</bl>()\n\n" +
   "<c>returns</c>\n" +
   "<s>51.178835,-1.826240</s>"
@@ -347,18 +346,20 @@ group       : "Components"
 </table>
 
 
-<!-- Settings
+<!-- Options
 =========================================== -->
-<h3 id="Settings">Settings</h3>
-<p>You can set the global defaults at <b>gmap.settings.markerOptions</b>.</p>
+<h3 id="Options">Options</h3>
 <p>
-  Only gmaps specifc settings are listed below.
+  The <a href="<%= data.urls.base %>/docs/map#MarkerOptions">default options</a> are set at <b>gmap.settings.markerOptions</b>.
+</p>
+<p>
+  Only gmaps specifc options are listed below.
   Refer to <a href="<%= data.urls.googleDocs %>#MarkerOptions">Google's documentation</a> for a full list of available options.
 </p>
 <table class="ui celled table">
   <thead>
     <tr>
-      <th class="three wide column">Setting</th>
+      <th class="three wide column">Option</th>
       <th class="three wide column">Default</th>
       <th class="ten wide column">Description</th>
     </tr>

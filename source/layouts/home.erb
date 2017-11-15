@@ -8,9 +8,9 @@
     <meta name="author" content="<%= data.global.author %>">
     <meta name="description" content="A JavaScript library that simplifies the development of Google Maps web applications.">
 
-    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/semantic.min.css" />
-    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/css-util.min.css" />
-    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/css/home.css" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/semantic.min.css<%= data.qs.semantic %>" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/vendor/semantic/css-util.min.css<%= data.qs.cssUtil %>" />
+    <link type="text/css" rel="stylesheet" href="<%= data.urls.base %>/css/home.css<%= data.qs.home %>" />
   </head>
   <body>
         
@@ -54,10 +54,10 @@
     <!-- Scripts
     =========================================== -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0SLOL7qb7Ch3gVhP0yBCVYCp1_lVwF60"></script>
-    <script type="text/javascript" src="<%= data.urls.base %>/vendor/jquery.min.js"></script>
-    <script type="text/javascript" src="<%= data.urls.base %>/vendor/gmaps.min.js?v=alpha.8"></script>
-    <script type="text/javascript" src="<%= data.urls.base %>/js/data.js"></script>
-    <script type="text/javascript" src="<%= data.urls.base %>/js/home.js"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/jquery.min.js<%= data.qs.jQuery %>"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/vendor/gmaps.min.js<%= data.qs.gmaps %>"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/js/data.js<%= data.qs.home %>"></script>
+    <script type="text/javascript" src="<%= data.urls.base %>/js/home.js<%= data.qs.home %>"></script>
 
   </body>
 </html>
