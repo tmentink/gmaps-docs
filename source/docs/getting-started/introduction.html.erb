@@ -1,11 +1,11 @@
 ---
 layout      : "docs"
-title       : "Getting started"
-group       : ""
+title       : "Introduction"
+group       : "Getting started"
 ---
 
 <h1 class="mainContent__title mt-0"><%= current_page.data.title %></h1>
-<div class="mainContent__intro">Get started with gmaps, a JavaScript library that enables the rapid development of robust Google Maps web applications by providing extended functionality with a more streamlined API.</div>
+<div class="mainContent__intro">Get started with gmaps, a JavaScript library that enables the rapid development of robust <a href="<%= data.urls.googleMaps %>">Google Maps</a> web applications by providing extended functionality with a more streamlined API.</div>
 
 
 <!-- Download
@@ -17,17 +17,15 @@ group       : ""
   <li>More options coming soon!</li>
 </ul>
 
-<p>Both the compiled and minified versions can be found within the <b>dist/</b> directory:</p>
-<%= code_segment "gmaps/\n" +
-  "└── dist/\n" +
-  "    ├── gmaps.js\n" +
-  "    └── gmaps.min.js"
-%>
-
 
 <!-- Starter Template
 =========================================== -->
 <h3 id="StarterTemplate" class="ui header">Starter template</h3>
+<p>
+  This is a basic template that will render a full-page map with the default settings.
+  Head over to the <a href="<%= data.urls.base %>/docs/map">Map</a> documentation to learn more!
+</p>
+
 <%= code_segment "<r>&lt;!doctype html&gt;</r>\n" +
   "<bl>&lt;html&gt;</bl>\n" +
   "  <bl>&lt;head&gt;</bl>\n" +

@@ -11,12 +11,14 @@
 
   <div class="sidemenu__items">         
   <% data.menu.each do |m| %>
-    <a class="sidemenu__item sidemenu__item--main<% if current_page.data.title == m.title %> sidemenu__item--active<% end %>" href="<%= data.urls.base %>/docs/<%= m.url %>"><%= m.title %></a>
-    <% if m.isGroup %>
+    <div class="sidemenu__group<% if current_page.data.group == m.title %> sidemenu__group--active<% end %>">
+      <a class="sidemenu__header" href="<%= data.urls.base %>/docs/<%= m.url %>"><%= m.title %></a>
+    <% if m.pages %>
       <% m.pages.each do |p| %>
-        <a class="sidemenu__item<% if current_page.data.title == p.title %> sidemenu__item--active<% end %><% if current_page.data.group != m.title %> d-none<% end %>" href="<%= data.urls.base %>/docs/<%= p.url %>"><%= p.title %></a>
+        <a class="sidemenu__item<% if current_page.data.title == p.title %> sidemenu__item--active<% end %>" href="<%= data.urls.base %>/docs/<%= p.url %>"><%= p.title %></a>
       <% end %>
     <% end %>
+    </div>
   <% end %>
   </div>
 </div>

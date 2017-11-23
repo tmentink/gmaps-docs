@@ -1,15 +1,19 @@
 ---
-- title:   "Getting started"
-  url:     "getting-started"
-  isGroup: false
+- title: "Getting started"
+  url:   "getting-started/introduction"
+  pages:
+    - title: "Introduction"
+      url:   "getting-started/introduction"
 
-- title:   "Map"
-  url:     "map"
-  isGroup: false
+    - title: "Contents"
+      url:   "getting-started/contents"
 
-- title:   "Components"
-  url:     "components/overview"
-  isGroup: true
+- title: "Map"
+  url:   "map"
+  pages: null
+
+- title: "Components"
+  url:   "components/overview"
   pages:
     - title: "Overview"
       url:   "components/overview"
@@ -32,13 +36,7 @@
     - title: "Rectangle"
       url:   "components/rectangle"
 
-- title:   "Examples"
-  url:     "examples/coming-soon"
-  isGroup: false
-  # pages:
-  #   - title: "Custom shapes"
-  #     url:   "examples/custom-shapes"
-
-  #   - title: "Delimited strings"
-  #     url:   "examples/delimited-strings"
+- title: "Examples"
+  url:   "examples/coming-soon"
+  pages: null
 ---

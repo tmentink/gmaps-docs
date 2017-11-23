@@ -1,0 +1,53 @@
+---
+layout      : "docs"
+title       : "Contents"
+group       : "Getting started"
+---
+
+<h1 class="mainContent__title mt-0"><%= current_page.data.title %></h1>
+<div class="mainContent__intro">Discover whats included in gmaps. Remember, gmaps requires <a href="<%= data.urls.googleMaps %>">Google Maps JavaScript API V3</a>.</div>
+
+
+<!-- Directory Structure
+=========================================== -->
+<h3 id="DirectoryStructure" class="ui header">Directory structure</h3>
+<p>Once downloaded, unzip the compressed folder and you will see something like this:</p>
+<%= code_segment "gmaps/\n" +
+  "├── dist/\n" +
+  "│   ├── gmaps.js\n" +
+  "│   └── gmaps.min.js\n" +
+  "├── src/\n" +
+  "│   └── js/\n" +
+  "└── test/\n" +
+  "    ├── unit/\n" +
+  "    └── visual/\n"
+%>
+
+<!-- dist
+=========================================== -->
+<h3 id="dist" class="ui header">dist/</h3>
+<p>
+  This folder contains the compiled and minified versions of gmaps.
+</p>
+
+
+<!-- src
+=========================================== -->
+<h3 id="src" class="ui header">src/</h3>
+<p>
+  This folder contains the source code for gmaps.
+  Before altering the source code, review the folder structure and the <b>gruntfile.js</b> to understand how gmaps is compiled.
+</p>
+
+
+<!-- test
+=========================================== -->
+<h3 id="test" class="ui header">test/</h3>
+<p>
+  This folder contains the test files for gmaps.
+</p>
+<ul class="ui list">
+  <li><b>unit/</b> holds all the unit tests</li>
+  <li><b>visual/</b> holds all the files needed to perform manual visual tests</li>
+</ul>
+
