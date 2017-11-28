@@ -28,12 +28,7 @@ group       : "Map"
       <th class="ten wide column">Description</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>components</td>
-      <td>Object</td>
-      <td>Holds the map's component arrays. All components added to the map will be stored within their respective component array.</td>
-    </tr>
+  <tbody>    
     <tr>
       <td>controls</td>
       <td>Array<a href="<%= data.urls.googleDocs %>#MVCArray">&lt;MVCArray&gt;</a></td>
@@ -48,6 +43,11 @@ group       : "Map"
       <td>obj</td>
       <td><a href="<%= data.urls.googleDocs %>#Map">Map</a></td>
       <td>A reference to the native google map object.</td>
+    </tr>
+    <tr>
+      <td>overlays</td>
+      <td>Object</td>
+      <td>Holds the map's overlay arrays. All overlays added to the map will be stored within their respective overlay array.</td>
     </tr>
     <tr>
       <td>settings</td>
@@ -78,14 +78,14 @@ group       : "Map"
 %>
 
 
-<!-- Adding components
+<!-- Adding overlays
 =========================================== -->
-<h3 id="AddComponents" class="ui header">Add components</h3>
+<h3 id="AddComponents" class="ui header">Add overlays</h3>
 <p>
-  To add components to the map, use the <b>add</b> method and specify the <b>component type</b> and <b>options</b>.
+  To add overlays to the map, use the <b>add</b> method and specify the <b>overlay type</b> and <b>options</b>.
 </p>
 <div class="ui info message">
-  Every component must be assigned an <b>id</b> when it is added to the map.
+  Every overlay must be assigned an <b>id</b> when it is added to the map.
   If an id is not specified, gmaps will autogenerate one for you.
 </div>
 <%= code_segment "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
@@ -98,7 +98,7 @@ group       : "Map"
 %>
 
 <p>
-  To add multiple components at once, you can pass in an array of options as the second parameter.
+  To add multiple overlays at once, you can pass in an array of options as the second parameter.
 </p>
 <%= code_segment "myMap.<bl>add</bl>(<s>markers</s>, [\n" +
   "  {\n" +
@@ -113,14 +113,14 @@ group       : "Map"
 %>
 
 
-<!-- Remove components
+<!-- Remove overlays
 =========================================== -->
-<h3 id="RemoveComponents" class="ui header">Remove components</h3>
+<h3 id="RemoveComponents" class="ui header">Remove overlays</h3>
 <p>
-  To remove components from the map, use the <b>remove</b> method and specify the <b>component type</b> and the <b>id(s)</b>. 
+  To remove overlays from the map, use the <b>remove</b> method and specify the <b>overlay type</b> and the <b>id(s)</b>. 
 </p>
 <p>
-  If an id parameter is not supplied, it will remove <b>all</b> components of the specified type.
+  If an id parameter is not supplied, it will remove <b>all</b> overlays of the specified type.
 </p>
 <%= code_segment "<c>single id</c>\n" +
   "myMap.<bl>remove</bl>(<s>marker</s>, <s>myMarker</s>)\n\n" +
@@ -174,8 +174,8 @@ group       : "Map"
   It accepts a <a href="<%= data.urls.googleDocs %>/#LatLngBounds">LatLngBounds</a> and sets the map's viewport to it.
 </p>
 <p>
-  With gmaps, you can also pass in an object with the <b>component(s)</b> and <b>id(s)</b> you want to center the map's viewport on.
-  Pass in <b>null</b> to select all components for that type.
+  With gmaps, you can also pass in an object with the <b>overlay(s)</b> and <b>id(s)</b> you want to center the map's viewport on.
+  Pass in <b>null</b> to select all overlays for that type.
 </p>
 <%= code_segment "myMap.<bl>fitBounds</bl>({\n" +
   "  markers: [<s>myMarker</s>, <o>43</o>],\n" +
@@ -220,7 +220,7 @@ group       : "Map"
   <tbody>
     <tr>
       <td>add(type, options)</td>
-      <td>Adds the specified component(s) to the map.</td>
+      <td>Adds the specified overlay(s) to the map.</td>
     </tr>
     <tr>
       <td>circles(ids)</td>
@@ -228,7 +228,7 @@ group       : "Map"
     </tr>
     <tr>
       <td>fitBounds(bounds)</td>
-      <td>Sets the map's viewport to contain the given bounds. Can also pass in an object of component types and ids.</td>
+      <td>Sets the map's viewport to contain the given bounds. Can also pass in an object of overlay types and ids.</td>
     </tr>
     <tr>
       <td>geolocate(options)</td>
@@ -292,7 +292,7 @@ group       : "Map"
     </tr>
     <tr>
       <td>remove(type, ids)</td>
-      <td>Removes the specified component(s) from the map. You can optionally supply id(s) to remove any matching component(s).</td>
+      <td>Removes the specified overlay(s) from the map. You can optionally supply id(s) to remove any matching overlay(s).</td>
     </tr>
     <tr>
       <td>reset()</td>
@@ -477,7 +477,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for circle components. Refer to <a href="<%= data.urls.googleDocs %>#CircleOptions">Google's documentation</a> for a full list of the available options.</td>
+      <td>The default options for circle overlays. Refer to <a href="<%= data.urls.googleDocs %>#CircleOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
     <tr id="DelimitedStrings">
       <td>delimitedStrings</td>
@@ -505,7 +505,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for label components.</td>
+      <td>The default options for label overlays.</td>
     </tr>
     <tr id="MapID">
       <td>mapId</td>
@@ -544,7 +544,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for marker components. Refer to <a href="<%= data.urls.googleDocs %>#MarkerOptions">Google's documentation</a> for a full list of the available options.</td>
+      <td>The default options for marker overlays. Refer to <a href="<%= data.urls.googleDocs %>#MarkerOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
     <tr id="PolygonOptions">
       <td>polygonOptions</td>
@@ -561,7 +561,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for polygon components. Refer to <a href="<%= data.urls.googleDocs %>#PolygonOptions">Google's documentation</a> for a full list of the available options.</td>
+      <td>The default options for polygon overlays. Refer to <a href="<%= data.urls.googleDocs %>#PolygonOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
     <tr id="PolylineOptions">
       <td>polylineOptions</td>
@@ -576,7 +576,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for polyline components. Refer to <a href="<%= data.urls.googleDocs %>#PolylineOptions">Google's documentation</a> for a full list of the available options.</td>
+      <td>The default options for polyline overlays. Refer to <a href="<%= data.urls.googleDocs %>#PolylineOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
     <tr id="RectangleOptions">
       <td>rectangleOptions</td>
@@ -593,7 +593,7 @@ group       : "Map"
         "  visible: <o>true</o>\n" +
         "}"
       %></td>
-      <td>The default options for rectangle components. Refer to <a href="<%= data.urls.googleDocs %>#RectangleOptions">Google's documentation</a> for a full list of the available options.</td>
+      <td>The default options for rectangle overlays. Refer to <a href="<%= data.urls.googleDocs %>#RectangleOptions">Google's documentation</a> for a full list of the available options.</td>
     </tr>
     <tr id="UrlPrecision">
       <td>urlPrecision</td>

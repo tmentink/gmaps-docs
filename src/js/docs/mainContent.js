@@ -16,7 +16,7 @@ var MainContent = ((MC) => {
 
   const Selector = {
     CODE_SEGMENT : ".code.segment",
-    COPY_BUTTON  : ".label",
+    COPY_BUTTON  : ".copyButton",
     MAIN_CONTENT : "#mainContent"
   }
 

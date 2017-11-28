@@ -41,13 +41,14 @@
   }
 }
 
-.code.segment {
-  .label {
-    position : absolute;
-    top      : .25rem;
-    right    : .25rem;
-  }
+.copyButton {
+  padding  : .5rem .75rem;
+  position : absolute;
+  top      : 0;
+  right    : 0;
+  cursor   : pointer;
 }
+
 
 
 // ------------------------------------------------------------------------
@@ -68,10 +69,15 @@
   font-size: 2.15rem;
 }
 
-.code.segment {
-  .label,
-  .label:hover {
-    background: transparent;
+.copyButton {
+  color       : $base--color;
+  font-size   : .75rem;
+  font-weight : 700;
+  line-height : 1;
+  @include transition("color", .1s);
+
+  &:hover {
+    color: $base--hover--color;
   }
 }
 

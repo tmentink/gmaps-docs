@@ -12,29 +12,29 @@
   url:   "map"
   pages: null
 
-- title: "Components"
-  url:   "components/overview"
+- title: "Overlays"
+  url:   "overlays/overview"
   pages:
     - title: "Overview"
-      url:   "components/overview"
+      url:   "overlays/overview"
 
     - title: "Circle"
-      url:   "components/circle"
+      url:   "overlays/circle"
 
     - title: "Label"
-      url:   "components/label"
+      url:   "overlays/label"
 
     - title: "Marker"
-      url:   "components/marker"
+      url:   "overlays/marker"
 
     - title: "Polygon"
-      url:   "components/polygon"
+      url:   "overlays/polygon"
 
     - title: "Polyline"
-      url:   "components/polyline"
+      url:   "overlays/polyline"
 
     - title: "Rectangle"
-      url:   "components/rectangle"
+      url:   "overlays/rectangle"
 
 - title: "Examples"
   url:   "examples/coming-soon"

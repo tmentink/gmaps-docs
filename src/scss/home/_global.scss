@@ -2,6 +2,11 @@
 // gmaps-docs: home/_global.scss
 // ------------------------------------------------------------------------
 
+
+// ------------------------------------------------------------------------
+// Structure
+// ------------------------------------------------------------------------
+
 html {
     -webkit-overflow-scrolling: touch;
 }
@@ -10,7 +15,33 @@ pre {
   overflow: auto;
 }
 
+.copyButton {
+  padding  : .5rem .75rem;
+  position : absolute;
+  top      : 0;
+  right    : 0;
+  cursor   : pointer;
+}
+
+
 .gmap {
   height     : 100%;
   min-height : rem(400px);
+}
+
+
+// ------------------------------------------------------------------------
+// Font & Color
+// ------------------------------------------------------------------------
+
+.copyButton {
+  color       : $base--color;
+  font-size   : .75rem;
+  font-weight : 700;
+  line-height : 1;
+  @include transition("color", .1s);
+
+  &:hover {
+    color: $base--hover--color;
+  }
 }

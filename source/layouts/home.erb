@@ -28,9 +28,105 @@
     <div class="triangle triangle--down"></div>
 
 
-    <!-- Examples
-    =========================================== -->
-    <div id="examples" class="stackable very relaxed ui grid container my-8"></div>
+    <div id="examples" class="stackable very relaxed ui grid container my-8">
+      
+      <!-- Simplified API
+      ========================================= -->
+      <div id="example1" class="two column row">
+        <div class="column">
+          <h2 class="ui header">Simplified API</h2>
+          <p>
+            With gmaps, you can add one or several overlays with a single method.
+            Removing overlays is even easier!
+          </p>
+
+          <%= btnRunCode "1", "add" %>
+          <%= code_segment "<c>add single marker</c>\n" +
+            "myMap.<bl>add</bl>(<s>marker</s>, {\n" +
+            "  id: <s>Bondi Beach</s>,\n" +
+            "  position: { lat: <o>-33.89</o>, lng: <o>151.27</o> }\n" +
+            "})\n\n" +
+            "<c>add multiple markers</c>\n" +
+            "myMap.<bl>add</bl>(<s>markers</s>, [\n" +
+            "  { id: <s>Bondi Beach</s>,    position: { lat: <o>-33.89</o>, lng: <o>151.27</o> } },\n" +
+            "  { id: <s>Coogee Beach</s>,   position: { lat: <o>-33.92</o>, lng: <o>151.25</o> } },\n" +
+            "  { id: <s>Cronulla Beach</s>, position: { lat: <o>-34.02</o>, lng: <o>151.15</o> } },\n" +
+            "  { id: <s>Manly Beach</s>,    position: { lat: <o>-33.80</o>, lng: <o>151.28</o> } },\n" +
+            "  { id: <s>Maroubra Beach</s>, position: { lat: <o>-33.95</o>, lng: <o>151.25</o> } }\n" +
+            "])"
+          %>
+
+          <%= btnRunCode "1", "remove" %>
+          <%= code_segment "myMap.<bl>remove</bl>(<s>markers</s>)" %>
+        </div>
+        <div class="column">
+          <div id="example1_map" class="gmap"></div>
+        </div>
+      </div>
+
+      <div class="ui divider my-4 mx-2 mx-md-5"></div>
+
+      <!-- Integrated Id System
+      ========================================= -->
+      <div id="example2" class="two column row">
+        <div class="column">
+          <h2 class="ui header">Integrated Id System</h2>
+          <p>
+            Every overlay is assigned an id when it is added to the map.
+            You can either manually assign these or let gmaps auto generate them.           
+          </p>
+          <p>
+            This enables methods to be called on all overlays at once, or you can target specific ids.
+          </p>
+
+          <%= btnRunCode "2", "all" %>
+          <%= code_segment "myMap.<bl>markers</bl>().<bl>toggle</bl>()" %>
+
+          <%= btnRunCode "2", "ids" %>
+          <%= code_segment "<c>single id</c>\n" +
+            "myMap.<bl>markers</bl>(<s>Bondi Beach</s>).<bl>setOptions</bl>(<s>animation</s>, <o>1</o>)\n\n" +
+            "<c>multiple ids</c>\n" +
+            "myMap.<bl>markers</bl>([<s>Coogee Beach</s>, <s>Manly Beach</s>]).<bl>toggle</bl>()"
+          %>
+        </div>
+        <div class="column">
+          <div id="example2_map" class="gmap"></div>
+        </div>
+      </div>
+
+      <div class="ui divider my-4 mx-2 mx-md-5"></div>
+
+      <!-- Method Chaining
+      ========================================= -->
+      <div id="example3" class="two column row">
+        <div class="column">
+          <h2 class="ui header">Method Chaining</h2>
+          <p>
+            Gmaps enables certain methods to be chained together allowing for shorter, more readable code. 
+          </p>
+          <p>
+            Combine this with the use of the <b>others</b> method to easily create some powerful interactions.
+          </p>
+
+          <%= btnRunCode "3", "zoom" %>
+          <%= code_segment "myMap.<bl>polygons</bl>([<o>1</o>, <o>2</o>, <o>3</o>, <o>4</o>, <o>5</o>]).<bl>zoom</bl>()\n" + 
+            "  .<bl>others</bl>().<bl>hide</bl>()"
+          %>
+
+          <%= btnRunCode "3", "hover" %>
+          <%= code_segment "myMap.<bl>polygons</bl>().<bl>on</bl>(<s>mouse over</s>, <p>function</p>() {\n" + 
+            "  myMap.<bl>polygons</bl>(<r>this</r>.gmaps.id)\n" +
+            "    .<bl>setOptions</bl>(<s>fill opacity</s>, <o>1</o>)\n" +
+            "    .<bl>others</bl>().<bl>setOptions</bl>(<s>fill opacity</s>, <o>.25</o>)\n" +
+            "})"
+          %>
+        </div>
+        <div class="column">
+          <div id="example3_map" class="gmap"></div>
+        </div>
+      </div>
+
+    </div>
 
 
     <!-- Footer

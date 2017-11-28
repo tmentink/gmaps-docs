@@ -1,5 +1,11 @@
 module CustomHelpers
 
+  def btnRunCode(example, method)
+    "<a data-example='#{example}' data-method='#{method}' class='ui black pointing below label'>" +
+      "Run Code" +
+    "</a>"
+  end
+
   def code_segment(code)
     # blue
     code.gsub! '<bl>',  '<span class="text-blue text-darken-2">'
@@ -30,7 +36,7 @@ module CustomHelpers
     code.gsub! '</s>', '"</span>'
 
     "<div class='ui code segment mt-0'>" +
-      "<a class='ui label'>Copy</a>" +
+      "<a class='copyButton'>Copy</a>" +
       "<pre class='m-0 p-0'><code>#{code}</code></pre>" +
     "</div>"
   end

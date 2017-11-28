@@ -6,29 +6,45 @@
   "use strict"
 
 
+  // ----------------------------------------------------------------------
+  // Constants
+  // ----------------------------------------------------------------------
+
+  const DataAttributes = {
+    EXAMPLE : "data-example",
+    METHOD  : "data-method"
+  }
+
+  const Selector = {
+    BTN_RUN_CODE : `[${DataAttributes.METHOD}]`,
+    CODE_SEGMENT : ".code.segment",
+    COPY_BUTTON  : ".copyButton",
+    EXAMPLES     : "#examples",
+    VERSION      : "#version"
+  }
+
+
   // ------------------------------------------------------------------------
   // Page Init
   // ------------------------------------------------------------------------
 
   $(document).ready(function() {
+    $cache(Selector.VERSION).html(`v${gmap.version}`)
 
-    $cache("#version").html(`v${gmap.version}`)
-
-    const $examples = $cache("#examples")
-    Object.keys(Example).forEach(function(key, index, arr) {
-      let HTML = Example[key].buildHTML()
-      if (index < arr.length -1) {
-        HTML += Temp.divider()
-      }
-
-      $examples.append(HTML)
-      Example[key].initMap()
+    $cache(Selector.CODE_SEGMENT).on("click", Selector.COPY_BUTTON, function() {
+      window.getSelection().selectAllChildren($(this).next("pre")[0])
+      document.execCommand("copy")
     })
 
-    $examples.on("click", "[data-method]", function() {
-      const btn = $(this)
-      const key = btn.data("example")
-      Example[key][btn.data("method")]()
+    Object.keys(Examples).forEach(function(key) {
+      Examples[key].initMap()
+    })
+
+    $cache(Selector.EXAMPLES).on("click", Selector.BTN_RUN_CODE, function() {
+      const btn    = $(this)
+      const key    = btn.attr(DataAttributes.EXAMPLE)
+      const method = btn.attr(DataAttributes.METHOD)
+      Examples[key][method]()
     })
   })
 

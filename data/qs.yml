@@ -1,8 +1,8 @@
 ---
 cssUtil:  "?v=1.1.1"
-docs:     "?v=0.1.1"
+docs:     "?v=0.2.0"
 gmaps:    "?v=1.0.0-alpha.9"
-home:     "?v=0.1.0"
+home:     "?v=0.2.0"
 jQuery:   "?v=3.2.1"
 semantic: "?v=2.2.13"
 ---
